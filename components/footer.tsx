@@ -52,7 +52,7 @@ export default function Footer({ currentPage }: FooterProps) {
 
       <div className="text-center">
         <div className="w-8 h-8 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
-          <div className="w-2 h-2 bg-black rounded-full"></div>
+          <div className="w-2 h-2 bg-black rounded-full" />
         </div>
         <p className="text-gray-500 text-xs">2025 parker rex. building the future with ai.</p>
       </div>
