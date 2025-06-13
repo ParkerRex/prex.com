@@ -1,5 +1,23 @@
 import Link from "next/link"
 import Footer from "@/components/footer"
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sponsors & Partnerships',
+  description: 'Partnership opportunities with Parker Rex for affiliate marketing and video sponsorships. Work with an AI-first content creator and entrepreneur.',
+  openGraph: {
+    title: 'Sponsors & Partnerships - Parker Rex',
+    description: 'Partnership opportunities for affiliate marketing and video sponsorships with an AI-first content creator.',
+    url: 'https://prex.com/sponsors',
+  },
+  twitter: {
+    title: 'Sponsors & Partnerships - Parker Rex',
+    description: 'Partnership opportunities for affiliate marketing and video sponsorships.',
+  },
+  alternates: {
+    canonical: 'https://prex.com/sponsors',
+  },
+}
 
 export default function SponsorsPage() {
   return (

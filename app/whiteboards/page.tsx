@@ -1,5 +1,23 @@
 import Link from "next/link"
 import Footer from "@/components/footer"
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Whiteboards & Visual Explanations',
+  description: 'Interactive whiteboards and visual explanations of AI concepts, product strategies, and technical deep-dives from Parker Rex. Coming soon.',
+  openGraph: {
+    title: 'Whiteboards & Visual Explanations - Parker Rex',
+    description: 'Interactive whiteboards and visual explanations of AI concepts, product strategies, and technical deep-dives.',
+    url: 'https://prex.com/whiteboards',
+  },
+  twitter: {
+    title: 'Whiteboards & Visual Explanations - Parker Rex',
+    description: 'Interactive whiteboards and visual explanations of AI concepts and product strategies.',
+  },
+  alternates: {
+    canonical: 'https://prex.com/whiteboards',
+  },
+}
 
 export default function WhiteboardsPage() {
   return (

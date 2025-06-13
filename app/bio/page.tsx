@@ -1,5 +1,23 @@
 import Link from "next/link"
 import Footer from "@/components/footer"
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Parker Rex Biography',
+  description: 'The complete story of Parker Rex - from building gaming rigs and smoke bombs at 15 to scaling a food delivery startup to $73M and becoming an AI-first entrepreneur. Raw, unfiltered journey.',
+  openGraph: {
+    title: 'Parker Rex Biography - The Complete Story',
+    description: 'From gaming rigs and pyrotechnics to scaling a startup to $73M and becoming an AI-first entrepreneur. The unfiltered journey.',
+    url: 'https://prex.com/bio',
+  },
+  twitter: {
+    title: 'Parker Rex Biography - The Complete Story',
+    description: 'From gaming rigs and pyrotechnics to scaling a startup to $73M and becoming an AI-first entrepreneur.',
+  },
+  alternates: {
+    canonical: 'https://prex.com/bio',
+  },
+}
 
 export default function BioPage() {
   return (
