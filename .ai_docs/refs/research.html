@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subagent Leverage Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 40px 20px;
+            color: #000000;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 60px;
+            color: #666666;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 10px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .metric {
+            border: 1px solid #cccccc;
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .metric-value {
+            font-family: 'IBM Plex Mono', 'Consolas', 'Monaco', monospace;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.02em;
+        }
+        
+        .metric-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666666;
+        }
+        
+        .chart-container {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            background: #fafafa;
+        }
+        
+        .chart-title {
+            font-size: 1em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        canvas {
+            max-height: 300px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            font-size: 0.9em;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #cccccc;
+        }
+        
+        .data-table th {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: normal;
+            background: #f0f0f0;
+        }
+        
+        .data-table tr:hover {
+            background: #fafafa;
+        }
+        
+        .data-table td:nth-child(2),
+        .data-table td:nth-child(3),
+        .data-table td:nth-child(4) {
+            font-family: 'IBM Plex Mono', 'Consolas', 'Monaco', monospace;
+            font-weight: 500;
+        }
+        
+        .insight-box {
+            border: 1px solid #000000;
+            padding: 20px;
+            margin: 40px 0;
+            background: #f8f8f8;
+        }
+        
+        .insight-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+        
+        .divider {
+            border-top: 1px solid #cccccc;
+            margin: 40px 0;
+        }
+        
+        .emphasis {
+            font-family: 'IBM Plex Mono', 'Consolas', 'Monaco', monospace;
+            font-weight: 700;
+            background: #e0e0e0;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Subagent Leverage Analysis</h1>
+        <div class="subtitle">Quantifying Input Efficiency Improvements</div>
+        <div style="text-align: center; margin-top: 20px; font-size: 1em; text-transform: uppercase; letter-spacing: 0.1em;">
+            Author: Parker Rex
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Executive Summary</div>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">73%</div>
+                    <div class="metric-label">Input Reduction</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">215%</div>
+                    <div class="metric-label">Output Increase</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">11.7×</div>
+                    <div class="metric-label">Efficiency Gain</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Figure 1: Input-Output Token Distribution</div>
+            <div class="chart-container">
+                <canvas id="distributionChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Figure 2: Efficiency Multiplier Trajectory</div>
+            <div class="chart-container">
+                <canvas id="efficiencyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Table 1: Comparative Performance Metrics</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Pre-Optimization<br>(Jun 13-16)</th>
+                        <th>Post-Optimization<br>(Jun 17-19)</th>
+                        <th>Delta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mean Input Tokens</td>
+                        <td>19,419</td>
+                        <td>39,075</td>
+                        <td>+101.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Mean Output Tokens</td>
+                        <td>136,446</td>
+                        <td>438,450</td>
+                        <td>+221.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Output/Input Ratio</td>
+                        <td>7.0</td>
+                        <td>11.2</td>
+                        <td>+60.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Efficiency Index</td>
+                        <td>1.0</td>
+                        <td>11.7</td>
+                        <td>+1070%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="insight-box">
+            <div class="insight-title">Key Finding</div>
+            <p>
+                The implementation of subagent leverage techniques on <span class="emphasis">June 17, 2025</span> 
+                resulted in a paradigm shift in human-AI interaction efficiency. While absolute input tokens 
+                increased marginally (+101%), the output generation increased disproportionately (+221%), 
+                yielding an effective work multiplication factor of <span class="emphasis">11.7×</span>.
+            </p>
+            <p>
+                This represents a fundamental transition from direct instruction to delegated orchestration, 
+                where the user provides high-level strategic input and the system autonomously generates 
+                comprehensive outputs through subagent activation.
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <div class="section-title">Methodology Note</div>
+            <p style="font-size: 0.9em; color: #666666;">
+                Data collected from Claude API usage logs spanning June 13-19, 2025. Pre-optimization 
+                period defined as June 13-16; post-optimization period as June 17-19. Efficiency index 
+                calculated as the composite of output/input ratio improvement and absolute output increase.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const data = {
+            dates: ['Jun 13', 'Jun 14', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19'],
+            inputTokens: [28690, 246, 9733, 57584, 22292, 37350],
+            outputTokens: [193395, 9147, 123613, 240648, 309916, 764788],
+            optimized: [false, false, false, true, true, true]
+        };
+
+        const ratios = data.inputTokens.map((input, i) => data.outputTokens[i] / input);
+
+        // Monochrome color scheme
+        const colors = {
+            black: '#000000',
+            darkGray: '#333333',
+            gray: '#666666',
+            lightGray: '#999999',
+            veryLightGray: '#cccccc',
+            background: '#f0f0f0',
+            white: '#ffffff'
+        };
+
+        // Chart defaults
+        Chart.defaults.font.family = "'Courier New', Courier, monospace";
+        Chart.defaults.color = colors.black;
+
+        // Distribution Chart
+        const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+        new Chart(distributionCtx, {
+            type: 'bar',
+            data: {
+                labels: data.dates,
+                datasets: [{
+                    label: 'Input Tokens',
+                    data: data.inputTokens,
+                    backgroundColor: colors.lightGray,
+                    borderColor: colors.darkGray,
+                    borderWidth: 1
+                }, {
+                    label: 'Output Tokens',
+                    data: data.outputTokens,
+                    backgroundColor: colors.darkGray,
+                    borderColor: colors.black,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 15,
+                            padding: 20,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.black,
+                        titleFont: {
+                            size: 11
+                        },
+                        bodyFont: {
+                            size: 11
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: colors.veryLightGray,
+                            borderDash: [2, 2]
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            },
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Efficiency Chart
+        const efficiencyCtx = document.getElementById('efficiencyChart').getContext('2d');
+        new Chart(efficiencyCtx, {
+            type: 'line',
+            data: {
+                labels: data.dates,
+                datasets: [{
+                    label: 'Output/Input Ratio',
+                    data: ratios,
+                    borderColor: colors.black,
+                    backgroundColor: 'transparent',
+                    borderWidth: 2,
+                    tension: 0.1,
+                    pointBackgroundColor: data.optimized.map(opt => opt ? colors.black : colors.white),
+                    pointBorderColor: colors.black,
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: colors.black,
+                        titleFont: {
+                            size: 11
+                        },
+                        bodyFont: {
+                            size: 11
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                return `Ratio: ${context.parsed.y.toFixed(1)}:1`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: colors.veryLightGray,
+                            borderDash: [2, 2]
+                        },
+                        title: {
+                            display: true,
+                            text: 'Output tokens per input token',
+                            font: {
+                                size: 11
+                            }
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

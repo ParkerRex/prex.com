@@ -1,9 +1,13 @@
-import { describe, it, expect, beforeEach, mock } from "bun:test";
-import { getChannelVideos, getVideoById, getAllChannelVideos } from "@/lib/youtube";
+import { beforeEach, describe, expect, it, mock } from "bun:test";
+import {
+	getAllChannelVideos,
+	getChannelVideos,
+	getVideoById,
+} from "@/lib/youtube";
 
 // Mock the global fetch
 const mockFetch = mock();
-(global as any).fetch = mockFetch;
+(global as { fetch: typeof mockFetch }).fetch = mockFetch;
 
 describe("YouTube Integration", () => {
 	beforeEach(() => {
@@ -27,12 +31,12 @@ describe("YouTube Integration", () => {
 								channelTitle: "Parker Rex",
 								channelId: "UC123",
 								thumbnails: {
-									high: { url: "https://i.ytimg.com/vi/video1/hqdefault.jpg" }
-								}
-							}
-						}
-					]
-				})
+									high: { url: "https://i.ytimg.com/vi/video1/hqdefault.jpg" },
+								},
+							},
+						},
+					],
+				}),
 			});
 
 			// Mock video details response
@@ -49,22 +53,22 @@ describe("YouTube Integration", () => {
 								channelTitle: "Parker Rex",
 								channelId: "UC123",
 								thumbnails: {
-									high: { url: "https://i.ytimg.com/vi/video1/hqdefault.jpg" }
+									high: { url: "https://i.ytimg.com/vi/video1/hqdefault.jpg" },
 								},
-								tags: ["AI", "tutorial"]
+								tags: ["AI", "tutorial"],
 							},
 							statistics: {
 								viewCount: "1000",
 								likeCount: "50",
 								favoriteCount: "0",
-								commentCount: "10"
+								commentCount: "10",
 							},
 							contentDetails: {
-								duration: "PT10M30S"
-							}
-						}
-					]
-				})
+								duration: "PT10M30S",
+							},
+						},
+					],
+				}),
 			});
 
 			const result = await getChannelVideos("parkerrex", 1);
@@ -81,12 +85,12 @@ describe("YouTube Integration", () => {
 				channelTitle: "Parker Rex",
 				channelId: "UC123",
 				tags: ["AI", "tutorial"],
-				url: "https://www.youtube.com/watch?v=video1"
+				url: "https://www.youtube.com/watch?v=video1",
 			});
 		});
 
 		it("should return empty array when API key is missing", async () => {
-			delete process.env.GOOGLE_API_KEY;
+			process.env.GOOGLE_API_KEY = undefined;
 
 			const result = await getChannelVideos("parkerrex");
 
@@ -97,7 +101,7 @@ describe("YouTube Integration", () => {
 		it("should handle API errors gracefully", async () => {
 			mockFetch.mockResolvedValueOnce({
 				ok: false,
-				statusText: "API Error"
+				statusText: "API Error",
 			});
 
 			const result = await getChannelVideos("parkerrex");
@@ -129,18 +133,20 @@ describe("YouTube Integration", () => {
 								channelTitle: "Parker Rex",
 								channelId: "UC123",
 								thumbnails: {
-									maxres: { url: "https://i.ytimg.com/vi/video1/maxresdefault.jpg" }
-								}
+									maxres: {
+										url: "https://i.ytimg.com/vi/video1/maxresdefault.jpg",
+									},
+								},
 							},
 							statistics: {
-								viewCount: "5000"
+								viewCount: "5000",
 							},
 							contentDetails: {
-								duration: "PT5M45S"
-							}
-						}
-					]
-				})
+								duration: "PT5M45S",
+							},
+						},
+					],
+				}),
 			});
 
 			const result = await getVideoById("video1");
@@ -156,7 +162,7 @@ describe("YouTube Integration", () => {
 				channelTitle: "Parker Rex",
 				channelId: "UC123",
 				tags: undefined,
-				url: "https://www.youtube.com/watch?v=video1"
+				url: "https://www.youtube.com/watch?v=video1",
 			});
 		});
 
@@ -164,8 +170,8 @@ describe("YouTube Integration", () => {
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
 				json: async () => ({
-					items: []
-				})
+					items: [],
+				}),
 			});
 
 			const result = await getVideoById("nonexistent");
@@ -180,39 +186,49 @@ describe("YouTube Integration", () => {
 			// parkerrex search
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
-				json: async () => ({ items: [{ id: { videoId: "video1" } }] })
+				json: async () => ({ items: [{ id: { videoId: "video1" } }] }),
 			});
-			
-			// parkerrexdaily search  
+
+			// parkerrexdaily search
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
-				json: async () => ({ items: [{ id: { videoId: "video2" } }] })
+				json: async () => ({ items: [{ id: { videoId: "video2" } }] }),
 			});
 
 			// parkerrex video details
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
 				json: async () => ({
-					items: [{
-						id: "video1",
-						snippet: { title: "Video 1", thumbnails: { high: { url: "thumb1.jpg" } } },
-						statistics: { viewCount: "1000" },
-						contentDetails: { duration: "PT5M" }
-					}]
-				})
+					items: [
+						{
+							id: "video1",
+							snippet: {
+								title: "Video 1",
+								thumbnails: { high: { url: "thumb1.jpg" } },
+							},
+							statistics: { viewCount: "1000" },
+							contentDetails: { duration: "PT5M" },
+						},
+					],
+				}),
 			});
 
 			// parkerrexdaily video details
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
 				json: async () => ({
-					items: [{
-						id: "video2", 
-						snippet: { title: "Video 2", thumbnails: { high: { url: "thumb2.jpg" } } },
-						statistics: { viewCount: "2000" },
-						contentDetails: { duration: "PT10M" }
-					}]
-				})
+					items: [
+						{
+							id: "video2",
+							snippet: {
+								title: "Video 2",
+								thumbnails: { high: { url: "thumb2.jpg" } },
+							},
+							statistics: { viewCount: "2000" },
+							contentDetails: { duration: "PT10M" },
+						},
+					],
+				}),
 			});
 
 			const result = await getAllChannelVideos();
@@ -229,19 +245,24 @@ describe("YouTube Integration", () => {
 			// Test through the API since formatDuration is not exported
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
-				json: async () => ({ items: [{ id: { videoId: "test" } }] })
+				json: async () => ({ items: [{ id: { videoId: "test" } }] }),
 			});
 
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
 				json: async () => ({
-					items: [{
-						id: "test",
-						snippet: { title: "Test", thumbnails: { high: { url: "test.jpg" } } },
-						statistics: { viewCount: "1000" },
-						contentDetails: { duration: "PT1H30M45S" } // 1 hour 30 minutes 45 seconds
-					}]
-				})
+					items: [
+						{
+							id: "test",
+							snippet: {
+								title: "Test",
+								thumbnails: { high: { url: "test.jpg" } },
+							},
+							statistics: { viewCount: "1000" },
+							contentDetails: { duration: "PT1H30M45S" }, // 1 hour 30 minutes 45 seconds
+						},
+					],
+				}),
 			});
 
 			const result = await getChannelVideos("parkerrex", 1);
@@ -251,19 +272,24 @@ describe("YouTube Integration", () => {
 		it("should format view count correctly", async () => {
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
-				json: async () => ({ items: [{ id: { videoId: "test" } }] })
+				json: async () => ({ items: [{ id: { videoId: "test" } }] }),
 			});
 
 			mockFetch.mockResolvedValueOnce({
 				ok: true,
 				json: async () => ({
-					items: [{
-						id: "test",
-						snippet: { title: "Test", thumbnails: { high: { url: "test.jpg" } } },
-						statistics: { viewCount: "1500000" }, // 1.5 million
-						contentDetails: { duration: "PT5M" }
-					}]
-				})
+					items: [
+						{
+							id: "test",
+							snippet: {
+								title: "Test",
+								thumbnails: { high: { url: "test.jpg" } },
+							},
+							statistics: { viewCount: "1500000" }, // 1.5 million
+							contentDetails: { duration: "PT5M" },
+						},
+					],
+				}),
 			});
 
 			const result = await getChannelVideos("parkerrex", 1);

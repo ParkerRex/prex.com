@@ -1,75 +1,80 @@
-import Link from "next/link"
-import Footer from "@/components/footer"
-import type { Metadata } from 'next'
+import Footer from "@/components/footer";
+import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Sponsors & Partnerships',
-  description: 'Partnership opportunities with Parker Rex for affiliate marketing and video sponsorships. Work with an AI-first content creator and entrepreneur.',
-  openGraph: {
-    title: 'Sponsors & Partnerships - Parker Rex',
-    description: 'Partnership opportunities for affiliate marketing and video sponsorships with an AI-first content creator.',
-    url: 'https://prex.com/sponsors',
-  },
-  twitter: {
-    title: 'Sponsors & Partnerships - Parker Rex',
-    description: 'Partnership opportunities for affiliate marketing and video sponsorships.',
-  },
-  alternates: {
-    canonical: 'https://prex.com/sponsors',
-  },
-}
+	title: "Sponsors & Partnerships",
+	description:
+		"Partnership opportunities with Parker Rex for affiliate marketing and video sponsorships. Work with an AI-first content creator and entrepreneur.",
+	openGraph: {
+		title: "Sponsors & Partnerships - Parker Rex",
+		description:
+			"Partnership opportunities for affiliate marketing and video sponsorships with an AI-first content creator.",
+		url: "https://prex.com/sponsors",
+	},
+	twitter: {
+		title: "Sponsors & Partnerships - Parker Rex",
+		description:
+			"Partnership opportunities for affiliate marketing and video sponsorships.",
+	},
+	alternates: {
+		canonical: "https://prex.com/sponsors",
+	},
+};
 
 export default function SponsorsPage() {
-  return (
-    <div className="min-h-screen bg-black text-white font-mono">
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
-        {/* Header */}
-        <div className="mb-12">
-          <Link href="/" className="text-gray-400 hover:text-white transition-colors mb-8 inline-block">
-            ← back
-          </Link>
-          <h1 className="text-3xl font-bold mb-4">my sponsors</h1>
-          <p className="text-gray-400 text-sm mb-2">here's all the brands that have run ads on my content</p>
-          <p className="text-gray-500 text-sm">
-            psssst... if you're a brand and want to run an ad on my channel,{" "}
-            <a href="mailto:me@parkerrex.com" className="text-blue-400 hover:text-blue-300 underline">
-              click here
-            </a>
-          </p>
-        </div>
+	return (
+		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+			<div className="container mx-auto px-4 py-16 max-w-2xl">
+				{/* Header */}
+				<div className="text-center mb-8">
+					<h1 className="text-4xl font-bold mb-4">my sponsors</h1>
+					<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+						here's all the brands that have run ads on my content.
+						if you're a brand and want to partner,{" "}
+						<a
+							href="mailto:me@parkerrex.com"
+							className="underline hover:text-gray-800 dark:hover:text-gray-200"
+						>
+							reach out
+						</a>
+					</p>
+				</div>
 
-        {/* Affiliates Section */}
-        <div className="mb-16">
-          <h2 className="text-xl font-bold mb-8 text-white">affiliates</h2>
-          <div className="flex flex-col items-center justify-center py-16">
-            <div className="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center mb-6">
-              <span className="text-2xl">🤝</span>
-            </div>
-            <h3 className="text-xl font-bold mb-4 text-gray-300">Coming Soon</h3>
-            <p className="text-gray-400 text-center max-w-md">
-              Affiliate partnerships with brands I actually use and recommend. Stay tuned for authentic product
-              recommendations.
-            </p>
-          </div>
-        </div>
+				{/* Affiliates Section */}
+				<div className="mb-12">
+					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
+						affiliates
+					</h2>
+					<div className="bg-gray-100 dark:bg-gray-900 p-4">
+						<div className="text-center py-8">
+							<div className="font-semibold mb-2">coming soon</div>
+							<p className="text-gray-600 dark:text-gray-400 text-sm">
+								affiliate partnerships with brands i actually use and recommend.
+								stay tuned for authentic product recommendations.
+							</p>
+						</div>
+					</div>
+				</div>
 
-        {/* Video Sponsors Section */}
-        <div className="mb-16">
-          <h2 className="text-xl font-bold mb-8 text-white">video sponsors</h2>
-          <div className="flex flex-col items-center justify-center py-16">
-            <div className="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center mb-6">
-              <span className="text-2xl">🎬</span>
-            </div>
-            <h3 className="text-xl font-bold mb-4 text-gray-300">Coming Soon</h3>
-            <p className="text-gray-400 text-center max-w-md">
-              Video sponsorship opportunities for brands that align with AI, productivity, and developer tools. Quality
-              over quantity.
-            </p>
-          </div>
-        </div>
+				{/* Video Sponsors Section */}
+				<div className="mb-12">
+					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
+						video sponsors
+					</h2>
+					<div className="bg-gray-100 dark:bg-gray-900 p-4">
+						<div className="text-center py-8">
+							<div className="font-semibold mb-2">coming soon</div>
+							<p className="text-gray-600 dark:text-gray-400 text-sm">
+								video sponsorship opportunities for brands that align with ai,
+								productivity, and developer tools. quality over quantity.
+							</p>
+						</div>
+					</div>
+				</div>
 
-        <Footer />
-      </div>
-    </div>
-  )
+				<Footer />
+			</div>
+		</div>
+	);
 }

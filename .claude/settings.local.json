@@ -5,7 +5,15 @@
       "Bash(grep:*)",
       "Bash(rm:*)",
       "Bash(bun run:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(bun biome check:*)",
+      "Bash(bun biome format:*)",
+      "Bash(rg:*)",
+      "WebFetch(domain:bear.app)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh repo view:*)",
+      "Bash(bun install:*)",
+      "Bash(bun:*)"
     ],
     "deny": []
   }

@@ -1,140 +1,156 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { blogCategories, categoryInfo, BlogCategory } from '@/lib/blog';
-import { getPostBySlug, getPostContent, getAllPosts, generateTOC } from '@/lib/mdx';
-import { mdxComponents } from '@/components/mdx';
-import { TableOfContents } from '@/components/blog/table-of-contents';
-import Footer from '@/components/footer';
+import { RelatedPosts } from "@/components/blog/related-posts";
+import Footer from "@/components/footer";
+import { mdxComponents } from "@/components/mdx";
+import { type BlogCategory, blogCategories, categoryInfo } from "@/lib/blog";
+import {
+	getAllPosts,
+	getPostBySlug,
+	getPostContent,
+} from "@/lib/mdx";
+import { tagToSlug } from "@/lib/tags";
+import type { Metadata } from "next";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface BlogPostPageProps {
-  params: Promise<{
-    category: string;
-    slug: string;
-  }>;
+	params: Promise<{
+		category: string;
+		slug: string;
+	}>;
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({
-    category: post.category,
-    slug: post.slug,
-  }));
+	const posts = getAllPosts();
+	return posts.map((post) => ({
+		category: post.category,
+		slug: post.slug,
+	}));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const { category, slug } = await params;
-  
-  if (!blogCategories.includes(category as BlogCategory)) {
-    return {
-      title: 'Post Not Found',
-    };
-  }
+export async function generateMetadata({
+	params,
+}: BlogPostPageProps): Promise<Metadata> {
+	const { category, slug } = await params;
 
-  const post = getPostBySlug(category as BlogCategory, slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    };
-  }
+	if (!blogCategories.includes(category as BlogCategory)) {
+		return {
+			title: "Post Not Found",
+		};
+	}
 
-  return {
-    title: `${post.title} - Parker Rex`,
-    description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      url: `https://prex.com/blog/${category}/${slug}`,
-      publishedTime: post.date,
-      authors: ['Parker Rex'],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-    },
-  };
+	const post = getPostBySlug(category as BlogCategory, slug);
+
+	if (!post) {
+		return {
+			title: "Post Not Found",
+		};
+	}
+
+	return {
+		title: `${post.title} - Parker Rex`,
+		description: post.description,
+		openGraph: {
+			title: post.title,
+			description: post.description,
+			type: "article",
+			url: `https://prex.com/blog/${category}/${slug}`,
+			publishedTime: post.date,
+			authors: ["Parker Rex"],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: post.title,
+			description: post.description,
+		},
+	};
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { category, slug } = await params;
+	const { category, slug } = await params;
 
-  if (!blogCategories.includes(category as BlogCategory)) {
-    notFound();
-  }
+	if (!blogCategories.includes(category as BlogCategory)) {
+		notFound();
+	}
 
-  const post = getPostBySlug(category as BlogCategory, slug);
-  const content = getPostContent(category as BlogCategory, slug);
+	const post = getPostBySlug(category as BlogCategory, slug);
+	const content = getPostContent(category as BlogCategory, slug);
 
-  if (!post || !content) {
-    notFound();
-  }
+	if (!post || !content) {
+		notFound();
+	}
 
-  const toc = generateTOC(content);
 
-  return (
-    <div className="min-h-screen bg-black text-white font-mono">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <header className="mb-8">
-          <Link
-            href={`/blog/${category}`}
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to {categoryInfo[category as BlogCategory].title.toLowerCase()}
-          </Link>
-          
-          <div className="mb-4">
-            <span className="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded uppercase tracking-wider">
-              {categoryInfo[category as BlogCategory].title}
-            </span>
-          </div>
-          
-          <h1 className="text-4xl font-bold mb-4 leading-tight">{post.title}</h1>
-          <p className="text-gray-400 text-lg mb-6">{post.description}</p>
-          
-          <div className="flex items-center gap-4 text-sm text-gray-500 pb-8 border-b border-gray-800">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            <span>{post.readingTime} min read</span>
-            {post.tags && post.tags.length > 0 && (
-              <div className="flex gap-2">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 bg-gray-800 rounded text-xs"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </header>
+	return (
+		<>
+			<div className="min-h-screen bg-white dark:bg-gray-950">
+				<div className="max-w-4xl mx-auto px-6 py-16">
+					<article>
+						<header className="mb-16 text-center">
+							<div className="mb-6">
+								<span className="inline-block px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-full uppercase tracking-wider">
+									{categoryInfo[category as BlogCategory].title}
+								</span>
+							</div>
 
-        <div className="relative">
-          <TableOfContents toc={toc} />
-          
-          <main className="max-w-none">
-            <article className="prose prose-invert prose-gray max-w-none">
-              <div className="blog-content">
-                <MDXRemote source={content} components={mdxComponents} />
-              </div>
-            </article>
-          </main>
-        </div>
+							<h1 className="text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+								{post.title}
+							</h1>
+							
+							<p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+								{post.description}
+							</p>
 
-        <Footer />
-      </div>
-    </div>
-  );
+							<div className="flex items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-500">
+								<time dateTime={post.date} className="font-medium">
+									{new Date(post.date).toLocaleDateString('en-US', { 
+										year: 'numeric', 
+										month: 'long', 
+										day: 'numeric' 
+									})}
+								</time>
+								<span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+								<span className="font-medium">{post.readingTime} min read</span>
+							</div>
+						</header>
+
+						<main className="prose prose-lg dark:prose-invert prose-gray max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-bold prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 dark:prose-strong:text-white prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-950/20 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300">
+							<MDXRemote source={content} components={mdxComponents} />
+						</main>
+
+						{post.tags && post.tags.length > 0 && (
+							<footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+								<div className="text-center">
+									<h3 className="text-sm font-medium text-gray-900 dark:text-white mb-6 uppercase tracking-wider">
+										Tagged in
+									</h3>
+									<div className="flex flex-wrap gap-3 justify-center">
+										{post.tags.map((tag) => (
+											<Link
+												key={tag}
+												href={`/blog/tags/${tagToSlug(tag)}`}
+												className="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-full transition-colors duration-200"
+											>
+												{tag}
+											</Link>
+										))}
+									</div>
+								</div>
+							</footer>
+						)}
+
+						<div className="mt-20">
+							<RelatedPosts
+								currentSlug={slug}
+								currentCategory={category as BlogCategory}
+								tags={post.tags}
+							/>
+						</div>
+					</article>
+				</div>
+			</div>
+
+			<Footer />
+		</>
+	);
 }
