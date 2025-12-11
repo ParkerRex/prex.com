@@ -21,72 +21,73 @@
 @layer base {
 	:root {
 		--background: 0 0% 100%;
-		--foreground: 0 0% 3.9%;
+		--foreground: 0 0% 0%; /* Pure Black */
 		--card: 0 0% 100%;
-		--card-foreground: 0 0% 3.9%;
+		--card-foreground: 0 0% 0%;
 		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 3.9%;
-		--primary: 0 0% 9%;
-		--primary-foreground: 0 0% 98%;
-		--secondary: 0 0% 96.1%;
-		--secondary-foreground: 0 0% 9%;
-		--muted: 0 0% 96.1%;
-		--muted-foreground: 0 0% 45.1%;
-		--accent: 0 0% 96.1%;
-		--accent-foreground: 0 0% 9%;
-		--destructive: 0 0% 20%;
+		--popover-foreground: 0 0% 0%;
+		--primary: 0 0% 0%; /* Black Primary */
+		--primary-foreground: 0 0% 100%;
+		--secondary: 0 0% 96%;
+		--secondary-foreground: 0 0% 0%;
+		--muted: 0 0% 96%;
+		--muted-foreground: 0 0% 40%;
+		--accent: 0 0% 96%;
+		--accent-foreground: 0 0% 0%;
+		--destructive: 0 84.2% 60.2%;
 		--destructive-foreground: 0 0% 98%;
-		--border: 0 0% 89.8%;
-		--input: 0 0% 89.8%;
-		--ring: 0 0% 3.9%;
-		--chart-1: 0 0% 20%;
-		--chart-2: 0 0% 40%;
-		--chart-3: 0 0% 60%;
-		--chart-4: 0 0% 80%;
-		--chart-5: 0 0% 90%;
-		--radius: 0rem;
+		--border: 0 0% 90%;
+		--input: 0 0% 90%;
+		--ring: 0 0% 0%;
+
+		/* Signal Color - Lab Blue */
+		--signal: 220 100% 50%;
+		--signal-foreground: 0 0% 100%;
+
+		--radius: 0rem; /* Squared off for lab look */
+
 		--sidebar-background: 0 0% 98%;
-		--sidebar-foreground: 240 5.3% 26.1%;
-		--sidebar-primary: 240 5.9% 10%;
-		--sidebar-primary-foreground: 0 0% 98%;
-		--sidebar-accent: 240 4.8% 95.9%;
-		--sidebar-accent-foreground: 240 5.9% 10%;
-		--sidebar-border: 220 13% 91%;
-		--sidebar-ring: 0 0% 20%;
+		--sidebar-foreground: 0 0% 40%;
+		--sidebar-primary: 0 0% 0%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 0 0% 96%;
+		--sidebar-accent-foreground: 0 0% 0%;
+		--sidebar-border: 0 0% 90%;
+		--sidebar-ring: 0 0% 0%;
 	}
 	.dark {
-		--background: 0 0% 3.9%;
-		--foreground: 0 0% 98%;
-		--card: 0 0% 3.9%;
-		--card-foreground: 0 0% 98%;
-		--popover: 0 0% 3.9%;
-		--popover-foreground: 0 0% 98%;
-		--primary: 0 0% 98%;
-		--primary-foreground: 0 0% 9%;
-		--secondary: 0 0% 14.9%;
-		--secondary-foreground: 0 0% 98%;
-		--muted: 0 0% 14.9%;
-		--muted-foreground: 0 0% 63.9%;
-		--accent: 0 0% 14.9%;
-		--accent-foreground: 0 0% 98%;
-		--destructive: 0 0% 80%;
-		--destructive-foreground: 0 0% 98%;
-		--border: 0 0% 14.9%;
-		--input: 0 0% 14.9%;
-		--ring: 0 0% 83.1%;
-		--chart-1: 0 0% 80%;
-		--chart-2: 0 0% 60%;
-		--chart-3: 0 0% 40%;
-		--chart-4: 0 0% 20%;
-		--chart-5: 0 0% 10%;
-		--sidebar-background: 240 5.9% 10%;
-		--sidebar-foreground: 240 4.8% 95.9%;
-		--sidebar-primary: 0 0% 80%;
-		--sidebar-primary-foreground: 0 0% 100%;
-		--sidebar-accent: 240 3.7% 15.9%;
-		--sidebar-accent-foreground: 240 4.8% 95.9%;
-		--sidebar-border: 240 3.7% 15.9%;
-		--sidebar-ring: 0 0% 20%;
+		--background: 0 0% 0%; /* Pure Black */
+		--foreground: 0 0% 100%;
+		--card: 0 0% 0%;
+		--card-foreground: 0 0% 100%;
+		--popover: 0 0% 0%;
+		--popover-foreground: 0 0% 100%;
+		--primary: 0 0% 100%; /* White Primary */
+		--primary-foreground: 0 0% 0%;
+		--secondary: 0 0% 10%;
+		--secondary-foreground: 0 0% 100%;
+		--muted: 0 0% 10%;
+		--muted-foreground: 0 0% 60%;
+		--accent: 0 0% 10%;
+		--accent-foreground: 0 0% 100%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 100%;
+		--border: 0 0% 15%;
+		--input: 0 0% 15%;
+		--ring: 0 0% 100%;
+
+		/* Signal Color - Lab Blue (Lighter/Brighter) */
+		--signal: 220 100% 60%;
+		--signal-foreground: 0 0% 0%;
+
+		--sidebar-background: 0 0% 5%;
+		--sidebar-foreground: 0 0% 70%;
+		--sidebar-primary: 0 0% 100%;
+		--sidebar-primary-foreground: 0 0% 0%;
+		--sidebar-accent: 0 0% 10%;
+		--sidebar-accent-foreground: 0 0% 100%;
+		--sidebar-border: 0 0% 15%;
+		--sidebar-ring: 0 0% 100%;
 	}
 }
 
@@ -96,6 +97,7 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+		font-feature-settings: "cv11", "ss01";
 	}
 
 	@keyframes spin {
@@ -104,37 +106,15 @@
 		}
 	}
 
-	/* Text selection styles - Dark mode default */
+	/* Text selection styles */
 	::selection {
-		@apply bg-white text-black;
-	}
-
-	::-moz-selection {
-		@apply bg-white text-black;
-	}
-
-	/* Light mode selection */
-	.light ::selection {
-		@apply bg-black text-white;
-	}
-
-	.light ::-moz-selection {
-		@apply bg-black text-white;
-	}
-
-	/* Light mode background and text adjustments */
-	html.light {
-		@apply bg-white;
-	}
-
-	html.light body {
-		@apply bg-white text-black;
+		@apply bg-zinc-900 text-white dark:bg-zinc-100 dark:text-black;
 	}
 }
 
-/* Enhanced Blog Content Styles for Light/Dark Theme */
+/* Minimalist Blog Content for Lab Aesthetic */
 .blog-content {
-	@apply text-gray-700 dark:text-gray-300 leading-relaxed;
+	@apply text-foreground leading-relaxed;
 }
 
 .blog-content h1,
@@ -143,113 +123,58 @@
 .blog-content h4,
 .blog-content h5,
 .blog-content h6 {
-	@apply text-gray-900 dark:text-white font-bold mb-6 mt-12 scroll-mt-20 first:mt-0;
+	@apply font-bold mb-4 mt-8 scroll-mt-20 first:mt-0 tracking-tight;
 }
 
-.blog-content h1 {
-	@apply text-4xl lg:text-5xl;
-}
+.blog-content h1 { @apply text-2xl lg:text-3xl border-b pb-2 border-border; }
+.blog-content h2 { @apply text-xl lg:text-2xl; }
+.blog-content h3 { @apply text-lg lg:text-xl; }
+.blog-content p { @apply mb-4 leading-7 text-base lg:text-base opacity-90; }
 
-.blog-content h2 {
-	@apply text-3xl lg:text-4xl;
-}
-
-.blog-content h3 {
-	@apply text-2xl lg:text-3xl;
-}
-
-.blog-content h4 {
-	@apply text-xl lg:text-2xl;
-}
-
-.blog-content h5 {
-	@apply text-lg lg:text-xl;
-}
-
-.blog-content h6 {
-	@apply text-base lg:text-lg;
-}
-
-.blog-content p {
-	@apply mb-6 leading-relaxed text-lg;
-}
-
-.blog-content ul,
-.blog-content ol {
-	@apply mb-6 pl-6 space-y-2;
-}
-
-.blog-content li {
-	@apply leading-relaxed text-lg;
-}
-
-.blog-content ul li {
-	@apply list-disc;
-}
-
-.blog-content ol li {
-	@apply list-decimal;
-}
+.blog-content ul, .blog-content ol { @apply mb-4 pl-4 space-y-1; }
+.blog-content li { @apply text-base opacity-90; }
+.blog-content ul li { @apply list-disc; }
+.blog-content ol li { @apply list-decimal; }
 
 .blog-content blockquote {
-	@apply border-l-4 border-blue-500 pl-6 py-4 my-8 bg-blue-50 dark:bg-blue-950/20 text-gray-700 dark:text-gray-300 rounded-r-lg;
+	@apply border-l-2 border-primary pl-4 py-2 my-6 bg-secondary/50 text-foreground italic;
 }
 
 .blog-content pre {
-	@apply bg-gray-100 dark:bg-gray-900 p-6 rounded-lg overflow-x-auto my-8 text-sm border border-gray-200 dark:border-gray-800;
+	@apply bg-secondary p-4 rounded-sm overflow-x-auto my-6 text-xs lg:text-sm border border-border font-mono;
 }
 
 .blog-content code {
-	@apply bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 px-2 py-1 rounded text-sm font-medium;
+	@apply bg-secondary px-1 py-0.5 rounded-sm text-xs lg:text-sm font-mono text-primary;
 }
 
 .blog-content pre code {
-	@apply bg-transparent p-0 text-gray-800 dark:text-gray-200;
+	@apply bg-transparent p-0 text-foreground;
 }
 
 .blog-content table {
-	@apply w-full border-collapse border border-gray-300 dark:border-gray-700 my-8 rounded-lg overflow-hidden;
+	@apply w-full border-collapse border border-border my-6 text-sm;
 }
 
-.blog-content th,
-.blog-content td {
-	@apply border border-gray-300 dark:border-gray-700 px-4 py-3;
+.blog-content th, .blog-content td {
+	@apply border border-border px-3 py-2;
 }
 
 .blog-content th {
-	@apply bg-gray-100 dark:bg-gray-800 font-semibold text-gray-900 dark:text-white;
-}
-
-.blog-content td {
-	@apply bg-white dark:bg-gray-900;
-}
-
-.blog-content hr {
-	@apply border-gray-300 dark:border-gray-700 my-12;
-}
-
-.blog-content strong {
-	@apply font-semibold text-gray-900 dark:text-white;
-}
-
-.blog-content em {
-	@apply italic;
+	@apply bg-secondary font-semibold text-left;
 }
 
 .blog-content a {
-	@apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 no-underline hover:underline transition-colors duration-200;
+	@apply underline decoration-1 underline-offset-4 decoration-zinc-400 hover:decoration-primary transition-all text-foreground;
 }
 
 /* Image styles */
 .blog-content img {
-	@apply rounded-lg shadow-lg my-8 mx-auto;
+	@apply border border-border my-6 mx-auto bg-secondary;
 }
 
 /* List improvements */
-.blog-content ul > li::marker {
-	@apply text-gray-400 dark:text-gray-600;
-}
-
+.blog-content ul > li::marker,
 .blog-content ol > li::marker {
-	@apply text-gray-400 dark:text-gray-600 font-medium;
+	@apply text-muted-foreground;
 }

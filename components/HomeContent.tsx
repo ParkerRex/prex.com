@@ -2,7 +2,6 @@
 
 import {
 	CodeIcon,
-	CommitIcon,
 	GitHubLogoIcon,
 	LinkedInLogoIcon,
 	StarIcon,
@@ -18,73 +17,65 @@ interface HomeContentProps {
 
 export default function HomeContent({ githubRepos }: HomeContentProps) {
 	return (
-		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
+		<div className="min-h-screen bg-background text-foreground flex flex-col font-mono text-sm">
 			<div className="container mx-auto px-4 py-16 max-w-2xl flex-1 flex flex-col">
 				{/* Terminal Intro */}
 				<TerminalIntro />
 
 				{/* Header */}
-				{/* Header */}
-				<div className="text-center mb-8">
-					<h1 className="text-4xl font-bold mb-4">Parker Rex</h1>
-					<div className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed space-y-4 max-w-2xl mx-auto text-left">
-						<p className="font-semibold text-center text-base">
-							Parker Rex is an Applied AI Architect and Product Executive.
+				<div className="text-left mb-12 border-b border-border pb-8">
+					<h1 className="text-xl font-bold mb-6 uppercase tracking-widest border-l-4 border-signal pl-4">
+						Parker Rex
+					</h1>
+					<div className="text-muted-foreground text-sm leading-relaxed space-y-4 max-w-none">
+						<p>
+							<strong className="text-foreground">
+								Applied AI Architect & Product Executive.
+							</strong>
 						</p>
 						<p>
-							Previously, he served as VP of Product at Delivery Dudes, where he
-							led the technology strategy for $73M in annual GMV, culminating in
-							a $23M acquisition.
+							Previously: VP of Product at Delivery Dudes. Led tech strategy for
+							$73M GMV. $23M acquisition.
 						</p>
 						<p>
-							Unlike consultants who only offer theory, Parker is a shipping
-							engineer. He builds production-grade infrastructure using
-							TypeScript, Next.js, PostgreSQL, pretty much anything in the web
-							ecosystem. He bridges the gap between the "Idea" and the
-							"Revenue," specializing in turning messy data into autonomous AI
-							workflows.
+							Implementation &gt; Theory. Builds production-grade infrastructure
+							(TypeScript, Next.js, PostgreSQL). Bridges "Idea" to "Revenue".
+							Specializes in autonomous AI workflows.
 						</p>
 					</div>
 				</div>
 
 				{/* Code */}
 				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						code
+					<h2 className="text-muted-foreground text-[10px] uppercase tracking-widest mb-4 border-b border-border pb-1">
+						// Code
 					</h2>
-					<div className="space-y-4">
+					<div className="grid grid-cols-1 gap-0 border-t border-border">
 						{githubRepos.map((repo) => (
 							<a
 								key={repo.name}
 								href={repo.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="block bg-gray-50 dark:bg-gray-900 p-4 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
+								className="group block p-4 hover:bg-secondary transition-colors border-b border-border"
 							>
-								<div className="flex items-start justify-between mb-2">
+								<div className="flex items-center justify-between mb-1">
 									<div className="flex items-center gap-2">
-										<CodeIcon className="w-5 h-5 flex-shrink-0" />
-										<div className="font-semibold">{repo.name}</div>
+										<CodeIcon className="w-4 h-4 text-muted-foreground group-hover:text-signal transition-colors" />
+										<div className="font-bold text-sm group-hover:underline decoration-signal underline-offset-4">
+											{repo.name}
+										</div>
 									</div>
-									<div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-										{repo.language && (
-											<span className="flex items-center gap-1">
-												<span className="w-3 h-3 bg-gray-600 dark:bg-gray-400" />
-												{repo.language}
-											</span>
-										)}
+									<div className="flex items-center gap-3 text-xs text-muted-foreground font-mono">
+										{repo.language && <span>{repo.language}</span>}
 										<span className="flex items-center gap-1">
-											<StarIcon className="w-4 h-4" />
+											<StarIcon className="w-3 h-3" />
 											{repo.stars}
 										</span>
 									</div>
 								</div>
-								<div className="text-gray-600 dark:text-gray-400 text-sm mb-2">
+								<div className="text-muted-foreground text-xs pl-6 opacity-80 line-clamp-1">
 									{repo.description}
-								</div>
-								<div className="flex items-center gap-1 text-xs text-gray-500">
-									<CommitIcon className="w-3 h-3" />
-									Updated {repo.lastCommit}
 								</div>
 							</a>
 						))}
@@ -93,39 +84,40 @@ export default function HomeContent({ githubRepos }: HomeContentProps) {
 
 				{/* Socials */}
 				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						socials
+					<h2 className="text-muted-foreground text-[10px] uppercase tracking-widest mb-4 border-b border-border pb-1">
+						// Connect
 					</h2>
-					<div className="space-y-4">
-						<a
-							href="https://twitter.com/parkerrex"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<TwitterLogoIcon className="w-5 h-5 flex-shrink-0" />
-							<div className="font-semibold">follow @parkerrex</div>
-						</a>
-
-						<a
-							href="https://linkedin.com/in/parkermrex"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<LinkedInLogoIcon className="w-5 h-5 flex-shrink-0" />
-							<div className="font-semibold">connect on linkedin</div>
-						</a>
-
-						<a
-							href="https://github.com/parkerrex"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<GitHubLogoIcon className="w-5 h-5 flex-shrink-0" />
-							<div className="font-semibold">github.com/parkerrex</div>
-						</a>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border">
+						{[
+							{
+								href: "https://twitter.com/parkerrex",
+								icon: TwitterLogoIcon,
+								label: "@parkerrex",
+							},
+							{
+								href: "https://linkedin.com/in/parkermrex",
+								icon: LinkedInLogoIcon,
+								label: "LinkedIn",
+							},
+							{
+								href: "https://github.com/parkerrex",
+								icon: GitHubLogoIcon,
+								label: "GitHub",
+							},
+						].map((social) => (
+							<a
+								key={social.label}
+								href={social.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="bg-background p-4 flex items-center justify-center gap-2 hover:bg-secondary hover:text-signal transition-colors group"
+							>
+								<social.icon className="w-4 h-4 text-muted-foreground group-hover:text-signal" />
+								<span className="text-xs font-bold uppercase tracking-wider">
+									{social.label}
+								</span>
+							</a>
+						))}
 					</div>
 				</div>
 

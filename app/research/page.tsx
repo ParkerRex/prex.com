@@ -61,30 +61,31 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
 	return (
-		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
+		<div className="min-h-screen bg-background text-foreground flex flex-col font-mono text-sm">
 			<div className="container mx-auto px-4 py-16 max-w-2xl flex-1 flex flex-col">
 				{/* Header */}
-				<div className="text-center mb-8">
-					<h1 className="text-4xl font-bold mb-4">
-						subagent leverage analysis
+				<div className="text-left mb-12 border-b border-border pb-8">
+					<h1 className="text-xl font-bold mb-6 uppercase tracking-widest border-l-4 border-signal pl-4">
+						Subagent Leverage Analysis
 					</h1>
-					<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-						quantifying input efficiency improvements in human-ai interaction
-						through subagent leverage techniques
+					<p className="text-muted-foreground text-sm uppercase tracking-wider pl-5">
+						Quantifying input efficiency improvements in human-ai interaction
 					</p>
 				</div>
 
 				{/* Executive Summary */}
 				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						executive summary
+					<h2 className="text-muted-foreground text-[10px] uppercase tracking-widest mb-4 border-b border-border pb-1">
+						// Executive Summary
 					</h2>
-					<div className="bg-gray-100 dark:bg-gray-900 p-4">
+					<div className="border border-border p-6 bg-background">
 						<div className="grid grid-cols-3 gap-4 text-center">
 							{metrics.map((metric) => (
 								<div key={metric.label}>
-									<div className="text-2xl font-bold mb-1">{metric.value}</div>
-									<div className="text-gray-600 dark:text-gray-400 text-xs uppercase">
+									<div className="text-2xl lg:text-3xl font-bold mb-2 text-signal">
+										{metric.value}
+									</div>
+									<div className="text-muted-foreground text-[10px] uppercase tracking-widest">
 										{metric.label}
 									</div>
 								</div>
@@ -93,40 +94,54 @@ export default function ResearchPage() {
 					</div>
 				</div>
 
+				{/* Key Finding - Moved up for impact */}
+				<div className="mb-12">
+					<div className="border-l-4 border-signal pl-6 py-2 bg-secondary/30">
+						<p className="text-sm leading-relaxed italic">
+							"The implementation of subagent leverage techniques resulted in an
+							effective work multiplication factor of{" "}
+							<span className="font-bold text-foreground not-italic bg-signal/10 px-1">
+								11.7×
+							</span>
+							."
+						</p>
+					</div>
+				</div>
+
 				{/* Token Data */}
 				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						token distribution
+					<h2 className="text-muted-foreground text-[10px] uppercase tracking-widest mb-4 border-b border-border pb-1">
+						// Token Distribution
 					</h2>
-					<div className="space-y-4">
+					<div className="border-t border-border">
 						{tokenData.map((item) => (
 							<div
 								key={item.date}
-								className="bg-gray-100 dark:bg-gray-900 p-4 hover:bg-gray-200 dark:hover:bg-gray-800"
+								className="border-b border-border py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-secondary/50 transition-colors px-2"
 							>
-								<div className="flex justify-between items-center mb-2">
-									<div className="font-semibold">{item.date}</div>
-									<div className="text-sm text-gray-600 dark:text-gray-400">
-										ratio: {(item.outputTokens / item.inputTokens).toFixed(1)}x
-									</div>
+								<div className="font-bold text-xs w-24 text-muted-foreground uppercase">
+									{item.date}
 								</div>
-								<div className="grid grid-cols-2 gap-4 text-sm">
+
+								<div className="flex-1 grid grid-cols-2 gap-4 text-xs">
 									<div>
-										<span className="text-gray-600 dark:text-gray-400">
-											input:{" "}
-										</span>
+										<span className="text-muted-foreground mr-2">In:</span>
 										<span className="font-mono">
 											{item.inputTokens.toLocaleString()}
 										</span>
 									</div>
 									<div>
-										<span className="text-gray-600 dark:text-gray-400">
-											output:{" "}
-										</span>
+										<span className="text-muted-foreground mr-2">Out:</span>
 										<span className="font-mono">
 											{item.outputTokens.toLocaleString()}
 										</span>
 									</div>
+								</div>
+
+								<div className="text-xs font-bold text-right w-24">
+									<span className="text-signal">
+										{(item.outputTokens / item.inputTokens).toFixed(1)}x
+									</span>
 								</div>
 							</div>
 						))}
@@ -135,73 +150,53 @@ export default function ResearchPage() {
 
 				{/* Performance Metrics */}
 				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						performance metrics
+					<h2 className="text-muted-foreground text-[10px] uppercase tracking-widest mb-4 border-b border-border pb-1">
+						// Performance Metrics
 					</h2>
-					<div className="space-y-4">
-						{performanceData.map((item) => (
-							<div
-								key={item.metric}
-								className="bg-gray-100 dark:bg-gray-900 p-4 hover:bg-gray-200 dark:hover:bg-gray-800"
-							>
-								<div className="flex justify-between items-center">
-									<div>
-										<div className="font-semibold">{item.metric}</div>
-										<div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-											{item.preOptimization} → {item.postOptimization}
-										</div>
-									</div>
-									<div className="text-right">
-										<div className="text-sm font-semibold text-green-600 dark:text-green-400">
+					<div className="border border-border">
+						<table className="w-full text-xs text-left">
+							<thead className="bg-secondary text-muted-foreground uppercase tracking-wider font-medium border-b border-border">
+								<tr>
+									<th className="px-4 py-3">Metric</th>
+									<th className="px-4 py-3">Pre</th>
+									<th className="px-4 py-3">Post</th>
+									<th className="px-4 py-3 text-right">Delta</th>
+								</tr>
+							</thead>
+							<tbody className="divide-y divide-border">
+								{performanceData.map((item) => (
+									<tr key={item.metric} className="hover:bg-secondary/30">
+										<td className="px-4 py-3 font-medium">{item.metric}</td>
+										<td className="px-4 py-3 text-muted-foreground">
+											{item.preOptimization}
+										</td>
+										<td className="px-4 py-3 text-muted-foreground">
+											{item.postOptimization}
+										</td>
+										<td className="px-4 py-3 text-right font-bold text-signal">
 											{item.delta}
-										</div>
-									</div>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-
-				{/* Key Finding */}
-				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						key finding
-					</h2>
-					<div className="bg-gray-100 dark:bg-gray-900 p-4">
-						<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-							the implementation of subagent leverage techniques on june 17,
-							2025 resulted in a paradigm shift in human-ai interaction
-							efficiency. while absolute input tokens increased marginally
-							(+101%), the output generation increased disproportionately
-							(+221%), yielding an effective work multiplication factor of{" "}
-							<span className="font-mono font-semibold">11.7×</span>.
-						</p>
-						<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mt-4">
-							this represents a fundamental transition from direct instruction
-							to delegated orchestration, where the user provides high-level
-							strategic input and the system autonomously generates
-							comprehensive outputs through subagent activation.
-						</p>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
 				</div>
 
 				{/* Methodology */}
-				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						methodology
+				<div className="mb-12 opacity-80">
+					<h2 className="text-muted-foreground text-[10px] uppercase tracking-widest mb-4 border-b border-border pb-1">
+						// Methodology
 					</h2>
-					<div className="bg-gray-100 dark:bg-gray-900 p-4">
-						<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-							data collected from claude api usage logs spanning june 13-19,
-							2025. pre-optimization period defined as june 13-16;
-							post-optimization period as june 17-19. efficiency index
-							calculated as the composite of output/input ratio improvement and
-							absolute output increase.
-						</p>
-					</div>
+					<p className="text-xs text-muted-foreground leading-relaxed">
+						Data collected from Claude API usage logs spanning June 13-19, 2025.
+						Pre-optimization period: June 13-16. Post-optimization period: June
+						17-19. Efficiency index calculated as the composite of output/input
+						ratio improvement and absolute output increase.
+					</p>
 				</div>
 
-				<Footer />
+				<Footer currentPage="research" />
 			</div>
 		</div>
 	);

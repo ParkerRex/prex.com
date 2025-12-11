@@ -498,14 +498,14 @@ export default function PianoNavigation() {
 	const blackKeys = pianoKeys.filter((key) => key.isBlack);
 
 	return (
-		<nav className="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden xl:block">
+		<nav className="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden xl:block font-mono">
 			{/* Mode Toggle */}
 			<button
 				type="button"
 				onClick={toggleSynthMode}
 				className="absolute -top-12 left-0 flex items-center gap-2 px-3 py-1.5
-					bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800
-					text-xs font-medium text-gray-700 dark:text-gray-300"
+					bg-background border border-border hover:bg-secondary
+					text-xs font-medium text-muted-foreground uppercase tracking-wider"
 				title={`Switch to ${synthMode === "piano" ? "Moog" : synthMode === "moog" ? "Guitar" : "Piano"} mode`}
 			>
 				{synthMode === "piano" ? (
@@ -539,22 +539,21 @@ export default function PianoNavigation() {
 									onMouseEnter={() => handleMouseEnter(key.frequency, key.note)}
 									onClick={initAudioContext}
 									className={cn(
-										"relative w-44 h-8 bg-amber-100 dark:bg-amber-200",
-										"border-2 border-amber-800 dark:border-amber-900",
-										"hover:bg-amber-200 dark:hover:bg-amber-300",
+										"relative w-44 h-8 bg-background",
+										"border border-border",
+										"hover:bg-secondary hover:border-foreground",
 										"flex items-center justify-between px-3",
-										"group overflow-hidden",
-										isActive &&
-											"bg-amber-300 dark:bg-amber-400 border-amber-900 dark:border-black",
+										"group overflow-hidden transition-all",
+										isActive && "bg-secondary border-signal",
 									)}
 								>
 									{/* Fret marker */}
-									<div className="w-1 h-6 bg-gray-600 dark:bg-gray-800" />
+									<div className="w-1 h-6 bg-muted-foreground/20" />
 
 									{/* Chord indicator */}
 									<div
 										className={cn(
-											"absolute left-2 top-0 bottom-0 w-0.5 bg-amber-800 dark:bg-amber-900",
+											"absolute left-2 top-0 bottom-0 w-1 bg-signal",
 											"transform -translate-x-full transition-transform",
 											"group-hover:translate-x-0",
 											isActive && "translate-x-0",
@@ -563,15 +562,16 @@ export default function PianoNavigation() {
 
 									<span
 										className={cn(
-											"text-xs font-medium text-amber-900 dark:text-amber-950",
-											isActive && "font-bold",
+											"text-xs font-medium text-muted-foreground",
+											isActive && "font-bold text-foreground",
+											"group-hover:text-foreground",
 										)}
 									>
 										{key.label}
 									</span>
 
 									{/* Chord name */}
-									<span className="text-[10px] font-bold text-amber-800 dark:text-amber-900">
+									<span className="text-[10px] font-bold text-muted-foreground bg-secondary px-1 border border-border">
 										{key.note}maj
 									</span>
 								</Link>
@@ -594,20 +594,18 @@ export default function PianoNavigation() {
 										}
 										onClick={initAudioContext} // Initialize on click as fallback
 										className={cn(
-											"relative w-40 h-10 bg-white dark:bg-gray-100",
-											"border border-gray-200 dark:border-gray-700",
-											"hover:bg-gray-50 dark:hover:bg-gray-200",
+											"relative w-40 h-10 bg-background",
+											"border border-border",
+											"hover:bg-secondary",
 											"flex items-center justify-end pr-3",
-											"group overflow-hidden",
-											isActive &&
-												"bg-gray-200 dark:bg-gray-300 border-black dark:border-white",
-											synthMode === "moog" && "bg-gray-50 dark:bg-gray-200", // Slightly different color for Moog mode
+											"group overflow-hidden transition-colors",
+											isActive && "bg-secondary border-signal",
 										)}
 									>
 										{/* Active/Hover indicator */}
 										<div
 											className={cn(
-												"absolute left-0 top-0 bottom-0 w-1 bg-black dark:bg-white",
+												"absolute left-0 top-0 bottom-0 w-1 bg-signal",
 												"transform -translate-x-full transition-transform",
 												"group-hover:translate-x-0",
 												isActive && "translate-x-0",
@@ -615,8 +613,9 @@ export default function PianoNavigation() {
 										/>
 										<span
 											className={cn(
-												"text-xs font-medium text-gray-600 dark:text-gray-700",
-												isActive && "text-black dark:text-black font-bold",
+												"text-xs font-medium text-muted-foreground",
+												isActive && "text-foreground font-bold",
+												"group-hover:text-foreground",
 											)}
 										>
 											{key.label}
@@ -642,19 +641,18 @@ export default function PianoNavigation() {
 										}
 										onClick={initAudioContext} // Initialize on click as fallback
 										className={cn(
-											"absolute w-28 h-7 bg-gray-900 dark:bg-black",
-											"hover:bg-gray-800 dark:hover:bg-gray-900",
+											"absolute w-28 h-7 bg-foreground",
+											"hover:bg-foreground/80",
 											"flex items-center justify-end pr-2",
 											"group z-10 overflow-hidden",
-											isActive && "bg-gray-700 dark:bg-gray-800",
-											synthMode === "moog" && "bg-gray-800 dark:bg-gray-950", // Slightly different color for Moog mode
+											isActive && "bg-signal",
 										)}
 										style={{ top: `${topPosition}px` }}
 									>
 										{/* Active/Hover indicator */}
 										<div
 											className={cn(
-												"absolute left-0 top-0 bottom-0 w-0.5 bg-white",
+												"absolute left-0 top-0 bottom-0 w-0.5 bg-background",
 												"transform -translate-x-full transition-transform",
 												"group-hover:translate-x-0",
 												isActive && "translate-x-0",
@@ -662,8 +660,8 @@ export default function PianoNavigation() {
 										/>
 										<span
 											className={cn(
-												"text-[10px] font-medium text-white",
-												isActive && "opacity-90",
+												"text-[10px] font-medium text-background",
+												isActive && "opacity-100",
 												"opacity-70 group-hover:opacity-100",
 											)}
 										>

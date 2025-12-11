@@ -1,6 +1,5 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -22,57 +21,32 @@ export default function Footer({ currentPage }: FooterProps) {
 	}
 
 	return (
-		<footer className="mt-auto pt-16">
-			<div className="border-t border-gray-200 dark:border-gray-800 pt-8">
-				<div className="flex flex-wrap justify-center gap-6 mb-8">
-					{[
-						{
-							href: "/about",
-							label: "about",
-							current: currentPage === "about",
-						},
-
-						{
-							href: "/research",
-							label: "research",
-							current: currentPage === "research",
-						},
-					].map((link) => (
-						<Link
-							key={link.href}
-							href={link.href}
-							className={`text-sm ${
-								link.current
-									? "text-gray-900 dark:text-gray-100 font-medium"
-									: "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-							}`}
-						>
-							{link.label}
-						</Link>
-					))}
+		<footer className="mt-auto pt-16 pb-8 border-t border-border">
+			<div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+				<div className="flex gap-4">
+					<Link
+						href="/about"
+						className={`hover:text-foreground transition-colors ${currentPage === "about" ? "text-foreground font-bold underline decoration-signal" : ""}`}
+					>
+						/about
+					</Link>
+					<Link
+						href="/research"
+						className={`hover:text-foreground transition-colors ${currentPage === "research" ? "text-foreground font-bold underline decoration-signal" : ""}`}
+					>
+						/research
+					</Link>
 				</div>
 
-				<div className="text-center pb-8">
-					<div className="flex items-center justify-center gap-4 mb-4">
-						<div className="w-8 h-8 bg-black dark:bg-white flex items-center justify-center">
-							<div className="w-2 h-2 bg-white dark:bg-black" />
-						</div>
-						<button
-							type="button"
-							onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-							className="p-2 bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-800"
-							aria-label="Toggle theme"
-						>
-							{theme === "dark" ? (
-								<SunIcon className="w-4 h-4 text-gray-800 dark:text-gray-200" />
-							) : (
-								<MoonIcon className="w-4 h-4 text-gray-800 dark:text-gray-200" />
-							)}
-						</button>
-					</div>
-					<p className="text-gray-500 dark:text-gray-500 text-xs">
-						2025 Parker Rex. building the future with ai.
-					</p>
+				<div className="flex items-center gap-4">
+					<span>© 2025 REX Labs.</span>
+					<button
+						type="button"
+						onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+						className="hover:text-foreground uppercase tracking-wider"
+					>
+						[{theme === "dark" ? "Dark mode" : "Light mode"}]
+					</button>
 				</div>
 			</div>
 		</footer>

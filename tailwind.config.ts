@@ -41,6 +41,11 @@ const config: Config = {
 					DEFAULT: "hsl(var(--destructive))",
 					foreground: "hsl(var(--destructive-foreground))",
 				},
+				/* New Signal Color */
+				signal: {
+					DEFAULT: "hsl(var(--signal))",
+					foreground: "hsl(var(--signal-foreground))",
+				},
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
@@ -68,8 +73,13 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)",
 			},
 			fontFamily: {
-				sans: ["var(--font-google-sans-code)"],
-				mono: ["var(--font-google-sans-code)"],
+				sans: [
+					"var(--font-google-sans)",
+					"ui-sans-serif",
+					"system-ui",
+					"sans-serif",
+				],
+				mono: ["var(--font-google-sans-code)", "ui-monospace", "monospace"],
 			},
 		},
 	},

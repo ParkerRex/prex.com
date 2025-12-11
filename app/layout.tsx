@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Google_Sans_Code } from "next/font/google";
+import { Google_Sans_Code, Inter } from "next/font/google";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import MobileNavigation from "@/components/MobileNavigation";
 import PianoNavigation from "@/components/PianoNavigation";
@@ -9,6 +9,11 @@ import "./globals.css";
 const googleSansCode = Google_Sans_Code({
 	subsets: ["latin"],
 	variable: "--font-google-sans-code",
+});
+
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--font-google-sans", // Mapping Inter to the requested variable name for now
 });
 
 export const metadata: Metadata = {
@@ -123,7 +128,9 @@ export default function RootLayout({
 
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${googleSansCode.className} overflow-x-hidden`}>
+			<body
+				className={`${inter.variable} ${googleSansCode.variable} font-sans overflow-x-hidden`}
+			>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
