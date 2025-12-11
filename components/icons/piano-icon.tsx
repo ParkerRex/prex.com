@@ -1,5 +1,3 @@
-import React from "react";
-
 export function PianoIcon({ className }: { className?: string }) {
 	return (
 		<svg
@@ -11,6 +9,7 @@ export function PianoIcon({ className }: { className?: string }) {
 			xmlns="http://www.w3.org/2000/svg"
 			aria-label="Piano Icon"
 		>
+			<title>Piano Icon</title>
 			{/* White keys */}
 			<rect
 				x="3"

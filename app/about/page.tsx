@@ -1,6 +1,6 @@
-import Footer from "@/components/footer";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
 	title: "About Parker Rex",
@@ -32,10 +32,7 @@ export default function AboutPage() {
 					<p className="text-gray-600 dark:text-gray-400 text-sm">
 						This page is for my Google Knowledge Graph panel. For a more
 						comprehensive (and grounded) biography,{" "}
-						<Link
-							href="/bio"
-							className="underline hover:no-underline"
-						>
+						<Link href="/bio" className="underline hover:no-underline">
 							go here
 						</Link>
 						.

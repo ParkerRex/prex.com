@@ -5,11 +5,14 @@ interface LoadingSpinnerProps {
 	size?: "sm" | "md" | "lg";
 }
 
-export function LoadingSpinner({ className, size = "md" }: LoadingSpinnerProps) {
+export function LoadingSpinner({
+	className,
+	size = "md",
+}: LoadingSpinnerProps) {
 	const sizeClasses = {
 		sm: "w-4 h-4 border-2",
-		md: "w-8 h-8 border-2", 
-		lg: "w-12 h-12 border-4"
+		md: "w-8 h-8 border-2",
+		lg: "w-12 h-12 border-4",
 	};
 
 	return (
@@ -17,7 +20,7 @@ export function LoadingSpinner({ className, size = "md" }: LoadingSpinnerProps) 
 			className={cn(
 				"border-black dark:border-white border-t-transparent dark:border-t-transparent animate-spin",
 				sizeClasses[size],
-				className
+				className,
 			)}
 			style={{ animation: "spin 1s linear infinite" }}
 		/>

@@ -1,5 +1,5 @@
-import Footer from "@/components/footer";
 import type { Metadata } from "next";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
 	title: "Parker Rex Biography",
@@ -68,11 +68,11 @@ export default function BioPage() {
 								several startups (Rapture, Venu, MGMT, all failed) before
 								finally learning to code at 28. Now I run multiple tech
 								businesses: MAP (my health platform), The REX Firm (AI
-								development agency), REX Media (AI education), and VAI
-								(paid community). My approach is simple: break down complex tech
-								into accessible pieces and build products that actually help
-								people. From pyrotechnics to product management to AI, it's been
-								31 years of following obsessions wherever they lead.
+								development agency), REX Media (AI education), and VAI (paid
+								community). My approach is simple: break down complex tech into
+								accessible pieces and build products that actually help people.
+								From pyrotechnics to product management to AI, it's been 31
+								years of following obsessions wherever they lead.
 							</p>
 						</div>
 					</section>
@@ -84,11 +84,11 @@ export default function BioPage() {
 						</h2>
 						<div className="bg-gray-100 dark:bg-gray-900 p-4">
 							<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-								Halfway through sophomore year, I left college. My
-								sister's boyfriend was delivering pizzas, so I joined his
-								company, Delivery Dudes. We started small, delivering steaks for
-								fancy restaurants in Delray Beach. I was learning way more there
-								than I ever did as a frat bro, so I stuck with it.
+								Halfway through sophomore year, I left college. My sister's
+								boyfriend was delivering pizzas, so I joined his company,
+								Delivery Dudes. We started small, delivering steaks for fancy
+								restaurants in Delray Beach. I was learning way more there than
+								I ever did as a frat bro, so I stuck with it.
 							</p>
 							<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
 								I got into design, flyering, and guerrilla marketing for
@@ -117,13 +117,12 @@ export default function BioPage() {
 						</h2>
 						<div className="bg-gray-100 dark:bg-gray-900 p-4">
 							<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-								The sale was messy. We upset DoorDash after calling them
-								out at a conference—dumb move. They hit back, and our revenue
-								dropped from $73 million to $47 million. COVID kept us alive,
-								but after selling, I became the product leader at Waitr (the
-								company that bought us). It was chaos. I convinced them to give
-								me a $2.3 million budget for engineers, built a team, then
-								bailed.
+								The sale was messy. We upset DoorDash after calling them out at
+								a conference—dumb move. They hit back, and our revenue dropped
+								from $73 million to $47 million. COVID kept us alive, but after
+								selling, I became the product leader at Waitr (the company that
+								bought us). It was chaos. I convinced them to give me a $2.3
+								million budget for engineers, built a team, then bailed.
 							</p>
 							<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
 								I'd pitched Y Combinator a few times—once flew out to pitch Paul
@@ -183,9 +182,15 @@ export default function BioPage() {
 								Reach out through:
 							</p>
 							<ul className="ml-6 mt-4">
-								<li className="list-disc text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2">Twitter</li>
-								<li className="list-disc text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2">YouTube</li>
-								<li className="list-disc text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2">me@parkerrex.com</li>
+								<li className="list-disc text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2">
+									Twitter
+								</li>
+								<li className="list-disc text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2">
+									YouTube
+								</li>
+								<li className="list-disc text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2">
+									me@parkerrex.com
+								</li>
 							</ul>
 						</div>
 					</section>

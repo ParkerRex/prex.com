@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface StaggerContainerProps {
 	children: ReactNode;
@@ -9,10 +9,10 @@ interface StaggerContainerProps {
 	className?: string;
 }
 
-export function StaggerContainer({ 
-	children, 
-	staggerDelay = 0.1, 
-	className = "" 
+export function StaggerContainer({
+	children,
+	staggerDelay = 0.1,
+	className = "",
 }: StaggerContainerProps) {
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -20,9 +20,9 @@ export function StaggerContainer({
 			opacity: 1,
 			transition: {
 				staggerChildren: staggerDelay,
-				delayChildren: 0.1
-			}
-		}
+				delayChildren: 0.1,
+			},
+		},
 	};
 
 	return (
@@ -51,25 +51,22 @@ export function StaggerItem({ children, className = "" }: StaggerItemProps) {
 			y: 0,
 			transition: {
 				duration: 0.6,
-				ease: [0.25, 0.1, 0.25, 1]
-			}
-		}
+				ease: [0.25, 0.1, 0.25, 1],
+			},
+		},
 	};
 
 	return (
-		<motion.div
-			variants={itemVariants}
-			className={className}
-		>
+		<motion.div variants={itemVariants} className={className}>
 			{children}
 		</motion.div>
 	);
 }
 
-export function HoverScale({ 
-	children, 
-	scale = 1.02, 
-	className = "" 
+export function HoverScale({
+	children,
+	scale = 1.02,
+	className = "",
 }: {
 	children: ReactNode;
 	scale?: number;

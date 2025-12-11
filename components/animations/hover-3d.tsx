@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { MouseEvent, ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 
 interface Hover3DProps {
 	children: ReactNode;
@@ -9,10 +9,10 @@ interface Hover3DProps {
 	depth?: number;
 }
 
-export function Hover3D({ 
-	children, 
-	className = "", 
-	depth = 20 
+export function Hover3D({
+	children,
+	className = "",
+	depth = 20,
 }: Hover3DProps) {
 	const mouseX = useMotionValue(0);
 	const mouseY = useMotionValue(0);
@@ -24,7 +24,7 @@ export function Hover3D({
 		const rect = e.currentTarget.getBoundingClientRect();
 		const centerX = rect.left + rect.width / 2;
 		const centerY = rect.top + rect.height / 2;
-		
+
 		const rotateXValue = ((e.clientY - centerY) / (rect.height / 2)) * -depth;
 		const rotateYValue = ((e.clientX - centerX) / (rect.width / 2)) * depth;
 
@@ -49,9 +49,7 @@ export function Hover3D({
 			}}
 			transition={{ type: "spring", stiffness: 300, damping: 30 }}
 		>
-			<div style={{ transform: "translateZ(50px)" }}>
-				{children}
-			</div>
+			<div style={{ transform: "translateZ(50px)" }}>{children}</div>
 		</motion.div>
 	);
 }
@@ -91,17 +89,18 @@ interface HoverLiftProps {
 	lift?: number;
 }
 
-export function HoverLift({ 
-	children, 
-	className = "", 
-	lift = -10 
+export function HoverLift({
+	children,
+	className = "",
+	lift = -10,
 }: HoverLiftProps) {
 	return (
 		<motion.div
 			className={`transition-shadow ${className}`}
 			whileHover={{
 				y: lift,
-				boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+				boxShadow:
+					"0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
 			}}
 			transition={{
 				type: "spring",

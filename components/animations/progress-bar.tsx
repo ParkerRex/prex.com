@@ -9,10 +9,10 @@ interface AnimatedProgressBarProps {
 	delay?: number;
 }
 
-export function AnimatedProgressBar({ 
-	progress, 
-	className = "", 
-	delay = 0 
+export function AnimatedProgressBar({
+	progress,
+	className = "",
+	delay = 0,
 }: AnimatedProgressBarProps) {
 	const [animatedProgress, setAnimatedProgress] = useState(0);
 
@@ -25,15 +25,17 @@ export function AnimatedProgressBar({
 	}, [progress, delay]);
 
 	return (
-		<div className={`w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 overflow-hidden ${className}`}>
+		<div
+			className={`w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 overflow-hidden ${className}`}
+		>
 			<motion.div
 				className="bg-orange-500 h-2 rounded-full relative"
 				initial={{ width: "0%" }}
 				animate={{ width: `${animatedProgress}%` }}
-				transition={{ 
-					duration: 1.5, 
+				transition={{
+					duration: 1.5,
 					ease: [0.25, 0.1, 0.25, 1],
-					delay: delay
+					delay: delay,
 				}}
 			>
 				<motion.div
@@ -43,7 +45,7 @@ export function AnimatedProgressBar({
 						duration: 2,
 						ease: "linear",
 						repeat: Infinity,
-						repeatDelay: 3
+						repeatDelay: 3,
 					}}
 				/>
 			</motion.div>

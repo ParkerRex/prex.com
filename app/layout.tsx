@@ -1,10 +1,15 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { ErrorBoundary } from "@/components/error-boundary";
-import PianoNavigation from "@/components/piano-navigation";
-import MobileNavigation from "@/components/mobile-navigation";
-import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
+import { Google_Sans_Code } from "next/font/google";
+import { ErrorBoundary } from "@/components/error-boundary";
+import MobileNavigation from "@/components/mobile-navigation";
+import PianoNavigation from "@/components/piano-navigation";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+
+const googleSansCode = Google_Sans_Code({
+	subsets: ["latin"],
+	variable: "--font-google-sans-code",
+});
 
 export const metadata: Metadata = {
 	title: {
@@ -118,13 +123,7 @@ export default function RootLayout({
 
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<head>
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-				/>
-			</head>
-			<body className={`${GeistMono.className} overflow-x-hidden`}>
+			<body className={`${googleSansCode.className} overflow-x-hidden`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

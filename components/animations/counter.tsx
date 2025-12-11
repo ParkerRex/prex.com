@@ -12,19 +12,19 @@ interface AnimatedCounterProps {
 	suffix?: string;
 }
 
-export function AnimatedCounter({ 
-	from = 0, 
-	to, 
-	duration = 2, 
+export function AnimatedCounter({
+	from = 0,
+	to,
+	duration = 2,
 	decimals = 0,
 	className = "",
-	suffix = ""
+	suffix = "",
 }: AnimatedCounterProps) {
 	const ref = useRef(null);
 	const motionValue = useMotionValue(from);
 	const springValue = useSpring(motionValue, {
 		damping: 100,
-		stiffness: 100
+		stiffness: 100,
 	});
 	const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -42,7 +42,11 @@ export function AnimatedCounter({
 		});
 	}, [springValue, decimals, suffix]);
 
-	return <span ref={ref} className={className}>{from}</span>;
+	return (
+		<span ref={ref} className={className}>
+			{from}
+		</span>
+	);
 }
 
 interface AnimatedPercentageProps {
@@ -50,7 +54,10 @@ interface AnimatedPercentageProps {
 	className?: string;
 }
 
-export function AnimatedPercentage({ value, className = "" }: AnimatedPercentageProps) {
+export function AnimatedPercentage({
+	value,
+	className = "",
+}: AnimatedPercentageProps) {
 	return (
 		<AnimatedCounter
 			to={value}

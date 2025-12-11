@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode, useRef, MouseEvent } from "react";
+import { type MouseEvent, type ReactNode, useRef } from "react";
 
 interface MagneticButtonProps {
 	children: ReactNode;
@@ -13,14 +13,14 @@ interface MagneticButtonProps {
 	rel?: string;
 }
 
-export function MagneticButton({ 
-	children, 
-	className = "", 
+export function MagneticButton({
+	children,
+	className = "",
 	strength = 0.3,
 	onClick,
 	href,
 	target,
-	rel
+	rel,
 }: MagneticButtonProps) {
 	const buttonRef = useRef<HTMLElement>(null);
 
@@ -30,7 +30,7 @@ export function MagneticButton({
 		const rect = buttonRef.current.getBoundingClientRect();
 		const centerX = rect.left + rect.width / 2;
 		const centerY = rect.top + rect.height / 2;
-		
+
 		const deltaX = (e.clientX - centerX) * strength;
 		const deltaY = (e.clientY - centerY) * strength;
 

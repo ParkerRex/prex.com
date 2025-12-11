@@ -11,12 +11,12 @@ export function LoadingDots({ size = "md", className = "" }: LoadingDotsProps) {
 	const sizeClasses = {
 		sm: "w-1 h-1",
 		md: "w-2 h-2",
-		lg: "w-3 h-3"
+		lg: "w-3 h-3",
 	};
 
 	const dotVariants = {
 		initial: { y: 0 },
-		animate: { y: -10 }
+		animate: { y: -10 },
 	};
 
 	const containerVariants = {
@@ -26,25 +26,28 @@ export function LoadingDots({ size = "md", className = "" }: LoadingDotsProps) {
 				staggerChildren: 0.2,
 				repeat: Infinity,
 				repeatType: "reverse" as const,
-				duration: 0.6
-			}
-		}
+				duration: 0.6,
+			},
+		},
 	};
 
 	return (
-		<motion.div 
+		<motion.div
 			className={`flex space-x-1 ${className}`}
 			variants={containerVariants}
 			initial="initial"
 			animate="animate"
 		>
-			{[0, 1, 2].map((i) => (
-				<motion.div
-					key={i}
-					className={`${sizeClasses[size]} bg-current rounded-full`}
-					variants={dotVariants}
-				/>
-			))}
+			{[0, 1, 2].map((i) => {
+				return (
+					// biome-ignore lint/suspicious/noArrayIndexKey: fixed array length
+					<motion.div
+						key={i}
+						className={`${sizeClasses[size]} bg-current rounded-full`}
+						variants={dotVariants}
+					/>
+				);
+			})}
 		</motion.div>
 	);
 }
@@ -57,7 +60,7 @@ export function LoadingSpinner({ className = "" }: { className?: string }) {
 			transition={{
 				duration: 1,
 				repeat: Infinity,
-				ease: "linear"
+				ease: "linear",
 			}}
 		/>
 	);
@@ -69,12 +72,12 @@ export function LoadingPulse({ className = "" }: { className?: string }) {
 			className={`w-4 h-4 bg-current rounded-full ${className}`}
 			animate={{
 				scale: [1, 1.2, 1],
-				opacity: [0.6, 1, 0.6]
+				opacity: [0.6, 1, 0.6],
 			}}
 			transition={{
 				duration: 1.5,
 				repeat: Infinity,
-				ease: "easeInOut"
+				ease: "easeInOut",
 			}}
 		/>
 	);
@@ -87,11 +90,11 @@ interface TypewriterProps {
 	className?: string;
 }
 
-export function Typewriter({ 
-	text, 
-	delay = 0, 
-	speed = 50, 
-	className = "" 
+export function Typewriter({
+	text,
+	delay = 0,
+	speed = 50,
+	className = "",
 }: TypewriterProps) {
 	return (
 		<motion.span
@@ -100,19 +103,22 @@ export function Typewriter({
 			animate={{ opacity: 1 }}
 			transition={{ delay }}
 		>
-			{text.split("").map((char, i) => (
-				<motion.span
-					key={i}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ 
-						delay: delay + (i * speed / 1000),
-						duration: 0
-					}}
-				>
-					{char}
-				</motion.span>
-			))}
+			{text.split("").map((char, i) => {
+				return (
+					// biome-ignore lint/suspicious/noArrayIndexKey: index is stable for static text
+					<motion.span
+						key={i}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{
+							delay: delay + (i * speed) / 1000,
+							duration: 0,
+						}}
+					>
+						{char}
+					</motion.span>
+				);
+			})}
 		</motion.span>
 	);
 }

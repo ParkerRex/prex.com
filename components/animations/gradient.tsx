@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface AnimatedGradientProps {
 	children: ReactNode;
 	className?: string;
 }
 
-export function AnimatedGradient({ children, className = "" }: AnimatedGradientProps) {
+export function AnimatedGradient({
+	children,
+	className = "",
+}: AnimatedGradientProps) {
 	return (
 		<div className={`relative ${className}`}>
 			<motion.div
@@ -30,25 +33,23 @@ export function AnimatedGradient({ children, className = "" }: AnimatedGradientP
 	);
 }
 
-export function ShimmerText({ 
-	children, 
-	className = "" 
-}: { 
-	children: ReactNode; 
+export function ShimmerText({
+	children,
+	className = "",
+}: {
+	children: ReactNode;
 	className?: string;
 }) {
 	return (
-		<span className={`relative inline-block ${className}`}>
-			{children}
-		</span>
+		<span className={`relative inline-block ${className}`}>{children}</span>
 	);
 }
 
-export function GradientBorder({ 
-	children, 
-	className = "" 
-}: { 
-	children: ReactNode; 
+export function GradientBorder({
+	children,
+	className = "",
+}: {
+	children: ReactNode;
 	className?: string;
 }) {
 	return (

@@ -1,12 +1,12 @@
+import {
+	EfficiencyChart,
+	InsightBox,
+	MetricDisplay,
+	PerformanceTable,
+	TokenDistributionChart,
+} from "./chart-components";
 import { CustomLink } from "./custom-link";
 import { RoundedImage } from "./rounded-image";
-import { 
-	MetricDisplay, 
-	TokenDistributionChart, 
-	EfficiencyChart, 
-	PerformanceTable, 
-	InsightBox 
-} from "./chart-components";
 
 export const mdxComponents = {
 	img: RoundedImage,
