@@ -1,22 +1,17 @@
 "use client";
 
-import Footer from "@/components/footer";
-import { TerminalIntro } from "@/components/terminal-intro";
-import type { RepoData } from "@/lib/github";
 import {
-	BackpackIcon,
 	CodeIcon,
 	CommitIcon,
-	ExternalLinkIcon,
 	GitHubLogoIcon,
-	HomeIcon,
-	LightningBoltIcon,
 	LinkedInLogoIcon,
-	PersonIcon,
 	StarIcon,
 	TwitterLogoIcon,
 	VideoIcon,
 } from "@radix-ui/react-icons";
+import Footer from "@/components/footer";
+import { TerminalIntro } from "@/components/terminal-intro";
+import type { RepoData } from "@/lib/github";
 
 interface HomeContentProps {
 	githubRepos: RepoData[];
@@ -28,7 +23,7 @@ export default function HomeContent({ githubRepos }: HomeContentProps) {
 			<div className="container mx-auto px-4 py-16 max-w-2xl flex-1">
 				{/* Terminal Intro */}
 				<TerminalIntro />
-				
+
 				{/* Header */}
 				<div className="text-center mb-8">
 					<h1 className="text-4xl font-bold mb-4">parker rex</h1>
@@ -159,88 +154,6 @@ export default function HomeContent({ githubRepos }: HomeContentProps) {
 								<div className="font-semibold">github.com/parkerrex</div>
 								<div className="text-gray-600 dark:text-gray-400 text-sm">
 									where i build in public and share code
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				{/* Projects */}
-				<div className="mb-12">
-					<h2 className="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider mb-6 text-center">
-						projects
-					</h2>
-					<div className="space-y-4">
-						<a
-							href="https://www.skool.com/troublefreeai"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-start gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<PersonIcon className="w-5 h-5 mt-1 flex-shrink-0" />
-							<div>
-								<div className="font-semibold">vibe with ai (vai)</div>
-								<div className="text-gray-600 dark:text-gray-400 text-sm">
-									private builder network with custom dev tools, active discord,
-									and weekly drops
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="https://rexorg.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-start gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<LightningBoltIcon className="w-5 h-5 mt-1 flex-shrink-0" />
-							<div>
-								<div className="font-semibold">rex labs</div>
-								<div className="text-gray-600 dark:text-gray-400 text-sm">
-									ai-first agency helping businesses onboard to the ai world
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="/sponsors"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-start gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<BackpackIcon className="w-5 h-5 mt-1 flex-shrink-0" />
-							<div>
-								<div className="font-semibold">rex media</div>
-								<div className="text-gray-600 dark:text-gray-400 text-sm">
-									content & sponsorship partnerships with brands
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="https://rexorg.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-start gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<HomeIcon className="w-5 h-5 mt-1 flex-shrink-0" />
-							<div>
-								<div className="font-semibold">rex builds</div>
-								<div className="text-gray-600 dark:text-gray-400 text-sm">
-									done-for-you automation & ai mvp development
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="https://rexorg.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="bg-gray-50 dark:bg-gray-900 p-4 flex items-start gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer border border-gray-200 dark:border-gray-800"
-						>
-							<ExternalLinkIcon className="w-5 h-5 mt-1 flex-shrink-0" />
-							<div>
-								<div className="font-semibold">rex advisory</div>
-								<div className="text-gray-600 dark:text-gray-400 text-sm">
-									ai roadmaps & fractional cpo services
 								</div>
 							</div>
 						</a>

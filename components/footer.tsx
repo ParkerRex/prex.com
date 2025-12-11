@@ -1,12 +1,12 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 interface FooterProps {
-	currentPage?: "about" | "bio" | "blog" | "whiteboards" | "content" | "research";
+	currentPage?: "about" | "bio" | "content" | "research";
 }
 
 export default function Footer({ currentPage }: FooterProps) {
@@ -26,12 +26,23 @@ export default function Footer({ currentPage }: FooterProps) {
 			<div className="border-t border-gray-200 dark:border-gray-800 pt-8">
 				<div className="flex flex-wrap justify-center gap-6 mb-8">
 					{[
-						{ href: "/about", label: "about", current: currentPage === "about" },
+						{
+							href: "/about",
+							label: "about",
+							current: currentPage === "about",
+						},
 						{ href: "/bio", label: "bio", current: currentPage === "bio" },
-						{ href: "/blog", label: "blog", current: currentPage === "blog" },
-						{ href: "/whiteboards", label: "whiteboards", current: currentPage === "whiteboards" },
-						{ href: "/content", label: "content", current: currentPage === "content" },
-						{ href: "/research", label: "research", current: currentPage === "research" }
+
+						{
+							href: "/content",
+							label: "content",
+							current: currentPage === "content",
+						},
+						{
+							href: "/research",
+							label: "research",
+							current: currentPage === "research",
+						},
 					].map((link) => (
 						<Link
 							key={link.href}

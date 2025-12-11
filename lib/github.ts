@@ -26,13 +26,22 @@ export interface RepoData {
 }
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPOS = ["joinvai/ai-sdlc", "joinvai/xgpt", "ParkerRex/10-essential-docs", "ParkerRex/flappybench"];
+const REPOS = [
+	"joinvai/ai-sdlc",
+	"ParkerRex/Twitter-X-Scraper-to-Vector",
+	"ParkerRex/8sleep-bed-controller",
+	"ParkerRex/10-essential-docs",
+];
 
 const REPO_DESCRIPTIONS: Record<string, string> = {
-	"joinvai/ai-sdlc": "AI-assisted CLI tool that transforms software development into a structured 8-step workflow from idea to production-ready code",
-	"joinvai/xgpt": "Powerful CLI tool for AI-powered Twitter/X scraping and question-answering with lightning-fast performance",
-	"ParkerRex/10-essential-docs": "Automated AI system that generates comprehensive technical documentation and architectural guides from codebases",
-	"ParkerRex/flappybench": "Simple Flappy Bird clone built with Pygame for benchmarking AI model code generation performance",
+	"joinvai/ai-sdlc":
+		"AI-assisted CLI tool that transforms software development into a structured 8-step workflow from idea to production-ready code",
+	"ParkerRex/Twitter-X-Scraper-to-Vector":
+		"A powerful, production-ready CLI tool for AI-powered Twitter/X scraping and question-answering. Built with Bun, SQLite, and OpenAI's latest models for lightning-fast performance and intelligent analysis.",
+	"ParkerRex/8sleep-bed-controller":
+		"A comprehensive solution for controlling Eight Sleep smart beds via physical hardware buttons, bypassing the need for phone app interaction",
+	"ParkerRex/10-essential-docs":
+		"Automated AI system that generates comprehensive technical documentation and architectural guides from codebases",
 };
 
 async function fetchWithAuth(url: string) {
@@ -91,7 +100,10 @@ export async function getRepoData(): Promise<RepoData[]> {
 
 			return {
 				name: repoInfo.name,
-				description: REPO_DESCRIPTIONS[repo] || repoInfo.description || "No description available",
+				description:
+					REPO_DESCRIPTIONS[repo] ||
+					repoInfo.description ||
+					"No description available",
 				stars: repoInfo.stargazers_count,
 				lastCommit: formatTimeAgo(lastCommit),
 				url: repoInfo.html_url,
@@ -107,35 +119,39 @@ export async function getRepoData(): Promise<RepoData[]> {
 		return [
 			{
 				name: "ai-sdlc",
-				description: "AI-assisted CLI tool that transforms software development into a structured 8-step workflow from idea to production-ready code",
+				description:
+					"AI-assisted CLI tool that transforms software development into a structured 8-step workflow from idea to production-ready code",
 				stars: 0,
 				lastCommit: "recently",
 				url: "https://github.com/joinvai/ai-sdlc",
 				language: "TypeScript",
 			},
 			{
-				name: "xgpt",
-				description: "Powerful CLI tool for AI-powered Twitter/X scraping and question-answering with lightning-fast performance",
+				name: "Twitter-X-Scraper-to-Vector",
+				description:
+					"A powerful, production-ready CLI tool for AI-powered Twitter/X scraping and question-answering. Built with Bun, SQLite, and OpenAI's latest models for lightning-fast performance and intelligent analysis.",
 				stars: 0,
 				lastCommit: "recently",
-				url: "https://github.com/joinvai/xgpt",
-				language: "Python",
+				url: "https://github.com/ParkerRex/Twitter-X-Scraper-to-Vector",
+				language: "TypeScript",
+			},
+			{
+				name: "8sleep-bed-controller",
+				description:
+					"A comprehensive solution for controlling Eight Sleep smart beds via physical hardware buttons, bypassing the need for phone app interaction",
+				stars: 0,
+				lastCommit: "recently",
+				url: "https://github.com/ParkerRex/8sleep-bed-controller",
+				language: "C++",
 			},
 			{
 				name: "10-essential-docs",
-				description: "Automated AI system that generates comprehensive technical documentation and architectural guides from codebases",
+				description:
+					"Automated AI system that generates comprehensive technical documentation and architectural guides from codebases",
 				stars: 0,
 				lastCommit: "recently",
 				url: "https://github.com/ParkerRex/10-essential-docs",
 				language: "Markdown",
-			},
-			{
-				name: "flappybench",
-				description: "Simple Flappy Bird clone built with Pygame for benchmarking AI model code generation performance",
-				stars: 0,
-				lastCommit: "recently",
-				url: "https://github.com/ParkerRex/flappybench",
-				language: "JavaScript",
 			},
 		];
 	}

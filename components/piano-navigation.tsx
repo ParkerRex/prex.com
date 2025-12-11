@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { GuitarIcon } from "@/components/icons/guitar-icon";
 import { MoogIcon } from "@/components/icons/moog-icon";
 import { PianoIcon } from "@/components/icons/piano-icon";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 interface PianoKey {
 	note: string;
@@ -22,8 +22,8 @@ const pianoKeys: PianoKey[] = [
 	{
 		note: "C#",
 		frequency: 277.18,
-		route: "/sponsors",
-		label: "Sponsors",
+		route: "",
+		label: "",
 		isBlack: true,
 		position: 0.5,
 	},
@@ -87,13 +87,6 @@ const pianoKeys: PianoKey[] = [
 		label: "",
 		isBlack: true,
 		position: 5.5,
-	},
-	{
-		note: "B",
-		frequency: 493.88,
-		route: "/whiteboards",
-		label: "Whiteboards",
-		isBlack: false,
 	},
 ];
 
@@ -548,8 +541,8 @@ export default function PianoNavigation() {
 			<button
 				type="button"
 				onClick={toggleSynthMode}
-				className="absolute -top-12 left-0 flex items-center gap-2 px-3 py-1.5 
-					bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 
+				className="absolute -top-12 left-0 flex items-center gap-2 px-3 py-1.5
+					bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800
 					text-xs font-medium text-gray-700 dark:text-gray-300"
 				title={`Switch to ${synthMode === "piano" ? "Moog" : synthMode === "moog" ? "Guitar" : "Piano"} mode`}
 			>
