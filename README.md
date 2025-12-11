@@ -1,8 +1,8 @@
 - [ ] Add chatbot thatll cap leads
-- [ ] update offer info about who i am
-    - [ ] hero page
+- [x] update offer info about who i am
+    - [x] hero page
     - [ ] add a photo of me
-    - [ ] update bio page.
+    - [x] update bio page.
 
 
 
