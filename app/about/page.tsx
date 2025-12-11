@@ -24,8 +24,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
 	return (
-		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
-			<div className="container mx-auto px-4 py-16 max-w-2xl">
+		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
+			<div className="container mx-auto px-4 py-16 max-w-2xl flex-1 flex flex-col">
 				{/* Header */}
 				<div className="text-center mb-8">
 					<h1 className="text-4xl font-bold mb-4">about parker rex</h1>

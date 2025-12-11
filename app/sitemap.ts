@@ -17,18 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: "monthly",
 			priority: 0.8,
 		},
-		{
-			url: `${baseUrl}/bio`,
-			lastModified: new Date(),
-			changeFrequency: "monthly",
-			priority: 0.8,
-		},
-		{
-			url: `${baseUrl}/content`,
-			lastModified: new Date(),
-			changeFrequency: "weekly",
-			priority: 0.9,
-		},
+
 	];
 
 	return [...staticPages];

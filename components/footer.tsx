@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 interface FooterProps {
-	currentPage?: "about" | "bio" | "content" | "research";
+	currentPage?: "about" | "research";
 }
 
 export default function Footer({ currentPage }: FooterProps) {
@@ -31,13 +31,8 @@ export default function Footer({ currentPage }: FooterProps) {
 							label: "about",
 							current: currentPage === "about",
 						},
-						{ href: "/bio", label: "bio", current: currentPage === "bio" },
 
-						{
-							href: "/content",
-							label: "content",
-							current: currentPage === "content",
-						},
+
 						{
 							href: "/research",
 							label: "research",

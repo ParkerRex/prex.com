@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+
 import Footer from "@/components/footer";
 
 // Data from the research
@@ -11,12 +11,6 @@ const tokenData = [
 	{ date: "Jun 18", inputTokens: 22292, outputTokens: 309916 },
 	{ date: "Jun 19", inputTokens: 37350, outputTokens: 764788 },
 ];
-
-const efficiencyData = tokenData.map((item) => ({
-	date: item.date,
-	ratio: item.outputTokens / item.inputTokens,
-	optimized: ["Jun 17", "Jun 18", "Jun 19"].includes(item.date),
-}));
 
 const metrics = [
 	{ value: "73%", label: "Input Reduction" },
@@ -67,8 +61,8 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
 	return (
-		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
-			<div className="container mx-auto px-4 py-16 max-w-2xl">
+		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col">
+			<div className="container mx-auto px-4 py-16 max-w-2xl flex-1 flex flex-col">
 				{/* Header */}
 				<div className="text-center mb-8">
 					<h1 className="text-4xl font-bold mb-4">
@@ -87,8 +81,8 @@ export default function ResearchPage() {
 					</h2>
 					<div className="bg-gray-100 dark:bg-gray-900 p-4">
 						<div className="grid grid-cols-3 gap-4 text-center">
-							{metrics.map((metric, index) => (
-								<div key={index}>
+							{metrics.map((metric) => (
+								<div key={metric.label}>
 									<div className="text-2xl font-bold mb-1">{metric.value}</div>
 									<div className="text-gray-600 dark:text-gray-400 text-xs uppercase">
 										{metric.label}
@@ -105,9 +99,9 @@ export default function ResearchPage() {
 						token distribution
 					</h2>
 					<div className="space-y-4">
-						{tokenData.map((item, index) => (
+						{tokenData.map((item) => (
 							<div
-								key={index}
+								key={item.date}
 								className="bg-gray-100 dark:bg-gray-900 p-4 hover:bg-gray-200 dark:hover:bg-gray-800"
 							>
 								<div className="flex justify-between items-center mb-2">
@@ -145,9 +139,9 @@ export default function ResearchPage() {
 						performance metrics
 					</h2>
 					<div className="space-y-4">
-						{performanceData.map((item, index) => (
+						{performanceData.map((item) => (
 							<div
-								key={index}
+								key={item.metric}
 								className="bg-gray-100 dark:bg-gray-900 p-4 hover:bg-gray-200 dark:hover:bg-gray-800"
 							>
 								<div className="flex justify-between items-center">

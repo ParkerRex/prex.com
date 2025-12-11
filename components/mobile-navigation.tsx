@@ -31,12 +31,6 @@ interface NavItem {
 const primaryNavItems: NavItem[] = [
 	{ route: "/", label: "Home", icon: HomeIcon, shortLabel: "Home" },
 	{
-		route: "/content",
-		label: "Content",
-		icon: VideoIcon,
-		shortLabel: "Content",
-	},
-	{
 		route: "/research",
 		label: "Research",
 		icon: MagnifyingGlassIcon,
@@ -46,7 +40,7 @@ const primaryNavItems: NavItem[] = [
 
 const moreNavItems: NavItem[] = [
 	{ route: "/about", label: "About", icon: PersonIcon, shortLabel: "About" },
-	{ route: "/bio", label: "Bio", icon: PersonIcon, shortLabel: "Bio" },
+
 ];
 
 export default function MobileNavigation() {

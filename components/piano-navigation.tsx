@@ -42,51 +42,13 @@ const pianoKeys: PianoKey[] = [
 		isBlack: true,
 		position: 1.5,
 	},
-	{ note: "E", frequency: 329.63, route: "/bio", label: "Bio", isBlack: false },
+
 	{
 		note: "F",
 		frequency: 349.23,
-		route: "/blog",
-		label: "Blog",
-		isBlack: false,
-	},
-	{
-		note: "F#",
-		frequency: 369.99,
-		route: "",
-		label: "",
-		isBlack: true,
-		position: 3.5,
-	},
-	{
-		note: "G",
-		frequency: 392.0,
-		route: "/content",
-		label: "Content",
-		isBlack: false,
-	},
-	{
-		note: "G#",
-		frequency: 415.3,
-		route: "",
-		label: "",
-		isBlack: true,
-		position: 4.5,
-	},
-	{
-		note: "A",
-		frequency: 440.0,
 		route: "/research",
 		label: "Research",
 		isBlack: false,
-	},
-	{
-		note: "A#",
-		frequency: 466.16,
-		route: "",
-		label: "",
-		isBlack: true,
-		position: 5.5,
 	},
 ];
 
