@@ -8,8 +8,8 @@ import {
 	StarIcon,
 	TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-import Footer from "@/components/footer";
-import { TerminalIntro } from "@/components/terminal-intro";
+import Footer from "@/components/Footer";
+import { TerminalIntro } from "@/components/TerminalIntro";
 import type { RepoData } from "@/lib/github";
 
 interface HomeContentProps {
@@ -24,12 +24,27 @@ export default function HomeContent({ githubRepos }: HomeContentProps) {
 				<TerminalIntro />
 
 				{/* Header */}
+				{/* Header */}
 				<div className="text-center mb-8">
-					<h1 className="text-4xl font-bold mb-4">parker rex</h1>
-					<p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-						tldr: ai-first builder & content creator. building tools, teaching
-						workflows, scaling businesses. usually shipping something new.
-					</p>
+					<h1 className="text-4xl font-bold mb-4">Parker Rex</h1>
+					<div className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed space-y-4 max-w-2xl mx-auto text-left">
+						<p className="font-semibold text-center text-base">
+							Parker Rex is an Applied AI Architect and Product Executive.
+						</p>
+						<p>
+							Previously, he served as VP of Product at Delivery Dudes, where he
+							led the technology strategy for $73M in annual GMV, culminating in
+							a $23M acquisition.
+						</p>
+						<p>
+							Unlike consultants who only offer theory, Parker is a shipping
+							engineer. He builds production-grade infrastructure using
+							TypeScript, Next.js, PostgreSQL, pretty much anything in the web
+							ecosystem. He bridges the gap between the "Idea" and the
+							"Revenue," specializing in turning messy data into autonomous AI
+							workflows.
+						</p>
+					</div>
 				</div>
 
 				{/* Code */}

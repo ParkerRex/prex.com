@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 // Data from the research
 const tokenData = [

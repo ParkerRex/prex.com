@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Google_Sans_Code } from "next/font/google";
-import { ErrorBoundary } from "@/components/error-boundary";
-import MobileNavigation from "@/components/mobile-navigation";
-import PianoNavigation from "@/components/piano-navigation";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import MobileNavigation from "@/components/MobileNavigation";
+import PianoNavigation from "@/components/PianoNavigation";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const googleSansCode = Google_Sans_Code({

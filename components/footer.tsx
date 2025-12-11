@@ -32,7 +32,6 @@ export default function Footer({ currentPage }: FooterProps) {
 							current: currentPage === "about",
 						},
 
-
 						{
 							href: "/research",
 							label: "research",
@@ -72,7 +71,7 @@ export default function Footer({ currentPage }: FooterProps) {
 						</button>
 					</div>
 					<p className="text-gray-500 dark:text-gray-500 text-xs">
-						2025 parker rex. building the future with ai.
+						2025 Parker Rex. building the future with ai.
 					</p>
 				</div>
 			</div>

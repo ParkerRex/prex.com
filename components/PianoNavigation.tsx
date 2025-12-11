@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GuitarIcon } from "@/components/icons/guitar-icon";
-import { MoogIcon } from "@/components/icons/moog-icon";
-import { PianoIcon } from "@/components/icons/piano-icon";
+import { GuitarIcon } from "@/components/icons/GuitarIcon";
+import { MoogIcon } from "@/components/icons/MoogIcon";
+import { PianoIcon } from "@/components/icons/PianoIcon";
 import { cn } from "@/lib/utils";
 
 interface PianoKey {

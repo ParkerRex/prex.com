@@ -18,7 +18,7 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/DropdownMenu";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -40,7 +40,6 @@ const primaryNavItems: NavItem[] = [
 
 const moreNavItems: NavItem[] = [
 	{ route: "/about", label: "About", icon: PersonIcon, shortLabel: "About" },
-
 ];
 
 export default function MobileNavigation() {
@@ -168,6 +167,7 @@ export default function MobileNavigation() {
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
 							<button
+								type="button"
 								className={cn(
 									"flex flex-col items-center justify-center gap-1 p-2 rounded-lg",
 									"min-w-0 flex-1 relative overflow-hidden",

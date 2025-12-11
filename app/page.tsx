@@ -1,4 +1,4 @@
-import HomeContent from "@/components/home-content";
+import HomeContent from "@/components/HomeContent";
 import { getRepoData } from "@/lib/github";
 
 export default async function Home() {

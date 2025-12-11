@@ -6,18 +6,17 @@ import {
 	CartesianGrid,
 	Line,
 	LineChart,
-	ResponsiveContainer,
 	XAxis,
 	YAxis,
 } from "recharts";
-import { Card } from "@/components/ui/card";
+import { Card } from "@/components/ui/Card";
 import {
 	ChartContainer,
 	ChartLegend,
 	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/ui/Chart";
 
 // Metric Display Component
 export function MetricDisplay({
